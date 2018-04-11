@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="domex_account_voucher1"
+            string="Domex y Almex Q"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher1"
+            name="domex.reporte_voucher1"
+        />
+
+        <report
+            id="domex_account_voucher2"
+            string="Banrural Q"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher2"
+            name="domex.reporte_voucher2"
+        />
+
+        <report
+            id="domex_account_voucher3"
+            string="G&amp;T Q"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher3"
+            name="domex.reporte_voucher3"
+        />
+
+        <report
+            id="domex_account_voucher4"
+            string="Industrial Q"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher4"
+            name="domex.reporte_voucher4"
+        />
+
+        <report
+            id="domex_account_voucher5"
+            string="Industrial $"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher5"
+            name="domex.reporte_voucher5"
+        />
+
+        <report
+            id="domex_account_voucher6"
+            string="G&amp;T $"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher6"
+            name="domex.reporte_voucher6"
+        />
+
+        <report
+            id="domex_account_voucher7"
+            string="BAC $"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher7"
+            name="domex.reporte_voucher7"
+        />
+
+        <report
+            id="domex_account_voucher8"
+            string="GT$"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher8"
+            name="domex.reporte_voucher8"
+        />
+
+    </data>
+</openerp>
