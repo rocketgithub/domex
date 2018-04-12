@@ -36,5 +36,8 @@ class MrpProduction(models.Model):
     def multiplicar(self):
         for production in self:
             for m in production.move_raw_ids:
-                m.product_uom_qty = m.product_uom_qty * production.multiplicador_materia
+                m.quantity_done = m.product_uom_qty * production.multiplicador_materia - m.product_uom_qty
+                # m.product_qty = m.product_qty * production.multiplicador_materia
+                # m.product_uom_qty = m.product_uom_qty * production.multiplicador_materia
+                # m.ordered_qty = m.ordered_qty * production.multiplicador_materia
         return True
