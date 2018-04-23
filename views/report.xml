@@ -74,5 +74,32 @@
             name="domex.reporte_voucher8"
         />
 
+        <report
+            id="report_sale_order_domex"
+            string="Cotizacion Domex"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="domex.report_saleorder_domex"
+            name="domex.report_saleorder_domex"
+        />
+
+        <report
+            id="report_stock_picking_domex"
+            string="Envios Domex"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="domex.report_stockpicking_domex"
+            name="domex.report_stockpicking_domex"
+        />
+
+        <report
+            id="report_sale_order_shipping_domex"
+            string="Envios de ventas Domex"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="domex.report_saleordershipping_domex"
+            name="domex.report_saleordershipping_domex"
+        />
+
     </data>
 </openerp>

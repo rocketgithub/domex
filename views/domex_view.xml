@@ -24,6 +24,12 @@
                         </group>
                     </group>
                 </xpath>
+                <group position="inside">
+                    <group>
+                        <field name="proyecto"/>
+                        <field name="atencion"/>
+                    </group>
+                </group>
             </field>
         </record>
 
@@ -66,6 +72,23 @@
                     <button name="multiplicar" attrs="{'invisible': [('availability', 'in', ('assigned', 'none'))]}" string="Multiplicar" type="object"/>
                 </field>
             </field>
+        </record>
+
+        <record id="domex_view_order_form_inherit_sale_stock" model="ir.ui.view">
+            <field name="name">domex.sale.order.form.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+            <field name="arch" type="xml">
+                <group name="sale_shipping" position="inside">
+                    <field name="supplier"/>
+                    <field name="bill_to"/>
+                    <field name="consigned_to"/>
+                    <field name="send_docs_to"/>
+                    <field name="marks"/>
+                    <field name="insurance"/>
+                    <field name="delivery"/>
+                </group>
+           </field>
         </record>
 
     </data>
