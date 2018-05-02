@@ -30,6 +30,9 @@
                         <field name="atencion"/>
                     </group>
                 </group>
+                <field name="user_id" position="after">
+                    <field name="comision"/>
+                </field>
             </field>
         </record>
 

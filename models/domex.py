@@ -54,3 +54,4 @@ class SaleOrder(models.Model):
     marks = fields.Text(string="Marks")
     insurance = fields.Char('Insurance')
     delivery = fields.Char('Delivery')
+    comision = fields.Float('Comision de ventas')
