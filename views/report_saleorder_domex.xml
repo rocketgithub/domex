@@ -18,7 +18,7 @@
                                         <br/>
                                         <span t-field="o.company_id.country_id.name" style="padding-left:50px;"/>,<span t-field="o.company_id.state_id.name"/>
                                         <br/>
-                                        <span style="padding-left:45px;">Tel: </span><span t-field="o.company_id.phone"/>Fax: <span t-field="o.company_id.fax"/>
+                                        <span style="padding-left:35px;" align="center">Tel: </span><span t-field="o.company_id.phone"/> Fax: <span t-field="o.company_id.fax"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -31,7 +31,7 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td><img src="/domex/static/src/img/domex2.png" style="width:245px;height:65px"/></td>
+                                        <td><img src="/domex/static/src/img/modulex.png" style="width:245px;height:65px"/></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -112,21 +112,31 @@
                                         <td  class="text-right" style="border: 1px solid black;"><span t-esc="l.price_total" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></td>
                                     </tr>
                                 </t>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="border: 1px solid black;" class="text-right"><b>Total</b></td>
+                                    <td style="border: 1px solid black;" class="text-right"><b><span t-esc="o.amount_total" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></b></td>
+                                </tr>
                             </tbody>
                         </table>
                         <br/>
                         <table>
                             <tr>
-                                <td><b><span>Lugar de Entrega ______________________________________</span></b></td>
+                                <td><b><span style="padding-left: 75px;">Lugar de Entrega</span></b></td>
+                                <td style="width:50px;border-bottom: 1px solid black;"/>
+                                <td style="border-bottom: 1px solid black;"><b><span t-esc="o.lugar_entrega"/></b></td>
                             </tr>
                             <tr>
-                            </tr>
-                            <tr>
-                                <td><b><span>TIempo estimado de entrega ____________________________</span></b></td>
+                                <td><b><span>TIempo estimado de entrega </span></b></td>
+                                <td style="width:50px;border-bottom: 1px solid black;"/>
+                                <td style="border-bottom: 1px solid black;"><b><span t-esc="o.tiempo_estimado_entrega"/></b></td>
                             </tr>
                         </table>
                         <br/>
-                        <p style="text-decoration: underline;">
+                        <p>
                             <b><span style="background-color:#BDBDBD;">Notas:</span></b><br/>
                             Forma de Pago:  Contado, al confirmar orden.<br/>
                             El pago es unicamente con cheque a nombre de Domex, S.A. o deposito directo a las cuentas Domex<br/>
@@ -141,18 +151,19 @@
                         <br/>
                         <br/>
                         <br/>
-                        <br/>
-                        <br/>
                          <table align="center" class="table table-condensed" >
                             <thead align= "center">
                                 <tr>
-                                    <td><b>_______________________<p>Cliente</p></b>
-                                    </td>
-                                    <td><b>_______________________<p>Asesor/Vendedor/Comercial</p></b>
-                                    </td>
+                                    <td><b><p>_______________________<br/><span t-field="o.partner_id.name"/></p></b></td>
+                                    <td><b><p>_______________________<br/><span t-field="o.user_id.name"/><br/>Tel:<span t-field="o.user_id.mobile"/></p></b></td>
                                 </tr>
                             </thead>
-                        </table>                     
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p><span t-field="o.note"/></p>                  
                     </div>
                 </t>
             </t>

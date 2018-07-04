@@ -33,6 +33,9 @@
                 <field name="user_id" position="after">
                     <field name="comision"/>
                 </field>
+                <button name="action_confirm" position="after">
+                    <button name="recalcular_totales" type="object" string="Recalcular Totales"/>
+                </button>
             </field>
         </record>
 
@@ -90,6 +93,8 @@
                     <field name="marks"/>
                     <field name="insurance"/>
                     <field name="delivery"/>
+                    <field name="lugar_entrega"/>
+                    <field name="tiempo_estimado_entrega"/>
                 </group>
            </field>
         </record>

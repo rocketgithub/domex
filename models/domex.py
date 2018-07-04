@@ -55,3 +55,12 @@ class SaleOrder(models.Model):
     insurance = fields.Char('Insurance')
     delivery = fields.Char('Delivery')
     comision = fields.Float('Comision de ventas')
+    lugar_entrega = fields.Char('Lugar de entrega')
+    tiempo_estimado_entrega = fields.Char('Tiempo estimado de entrega')
+
+    @api.multi
+    def recalcular_totales(self):
+        for order in self:
+            for line in order.order_line:
+                line.price_unit = line.price_unit * line.largo
+        return True
