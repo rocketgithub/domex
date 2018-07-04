@@ -84,7 +84,7 @@
                                 <tbody>
                                     <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
                                         <td>
-                                            <span style="font-size: 200%" t-field="pack_operation.product_id"/>
+                                            <span style="font-size: 200%" t-esc="pack_operation.product_id.name"/>
                                             <t t-if="not pack_operation.product_id and pack_operation.package_id">
                                                 <span style="font-size: 200%" t-field="pack_operation.package_id"/>
                                             </t>
@@ -136,16 +136,19 @@
                             <p t-if="o.backorder_id">
                                 This shipment is a backorder of <t t-esc="o.backorder_id.name"/>.
                             </p>
+                            <p t-if="o.note">
+                                <span t-field="o.note"/>
+                            </p>
                             <p>
                                 <t t-if="backorder">
                                     All items couldn't be shipped, the remaining ones will be shipped as soon as they become available.
                                 </t>
                             </p>
                             <br/>
-                             <table align="center" class="table table-condensed" >
+                             <table align="center" class="table table-condensed mt48" >
                                 <thead align= "center">
                                     <tr>
-                                        <td><b>FIRMA DE RECIBIDO:______________________SELLO:______________________</b>
+                                        <td><b>FIRMA DE RECIBIDO:______________________________SELLO:____________________________</b>
                                         </td>
                                     </tr>
                                     <tr>
@@ -157,7 +160,7 @@
                                         <td><span t-field="o.company_id.street"/> <span t-field="o.company_id.street2"/></td>
                                     </tr>
                                 </thead>
-                            </table>  
+                            </table>
                         </div>
                     </t>
                 </xpath>
