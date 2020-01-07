@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="reporte_invoice4">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <div style="position: absolute; top: 3.5cm; left: 16cm">
+                        <span t-esc="dia(o)"/>
+                    </div>
+                    <div style="position: absolute; top: 3.5cm; left: 19.5cm">
+                        <span t-esc="mes(o)"/>
+                    </div>
+                    <div style="position: absolute; top: 3.5cm; left: 22cm">
+                        <span t-esc="anio(o)"/>
+                    </div>
+                    <div style="position: absolute; top: 4.3cm; left: 4cm; width: 15cm">
+                        <span style="font-family: monospace!important" t-field="o.partner_id.name"/>
+                    </div>
+                    <div style="position: absolute; top: 5.3cm; left: 20.1cm">
+                        <span t-field="o.partner_id.vat"/>
+                    </div>
+                    <div style="position: absolute; top: 5.3cm; left: 4cm; width: 13.5cm">
+                        <span t-field="o.partner_id.street"/>
+                    </div>
+                    
+
+
+                    <div style="position: absolute; top: 7cm; left: 0.5cm">
+                        <table>
+                            <tbody>
+                                <tr t-foreach="o.invoice_line_ids" t-as="l">
+                                    <td style="width: 4cm; font-size: 110%; padding-right: 0.2cm" class="text-center">
+                                        <span t-field="l.quantity"/>
+                                    </td>
+                                    <td style="width: 13.9cm; font-size: 110%">
+                                        <span t-esc="producto(l.name)"/>
+                                    </td>
+                                    
+                                    <td style="width: 3.5cm; font-size: 110%" class="text-right">
+                                        <span t-esc="total_linea(l)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+
+                    <div style="position: absolute; top: 13.6cm; left: 21.1cm; font-size: 110%">
+                        <span t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                    </div>
+
+                    <div style="font-size: 110%; text-transform: uppercase; position: absolute; top: 13.6cm; left:3.5cm; width: 20cm">
+                        <span t-esc="a_letras.num_a_letras(o.amount_total)"/>
+                    </div>
+
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

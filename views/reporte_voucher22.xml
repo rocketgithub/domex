@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="reporte_voucher1">
+    <template id="reporte_voucher22">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="o">
                 <div class="page">
 
-                    <div style="font-size: 110%; position: absolute; top: 1.6cm; left: 6.0cm">
+                    <div style="font-size: 110%; position: absolute; top: 1.7cm; left: 6.0cm">
                         GUATEMALA, <span t-field="o.payment_date"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 1.6cm; left: 15.3cm">
+                    <div style="font-size: 110%; position: absolute; top: 1.7cm; left: 16.4cm">
                         <span t-esc="'{0:,.2f}'.format(o.amount)"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 2.3cm; left: 3.4cm; width: 15cm">
-			<span t-esc="o.nombre_impreso or o.partner_id.name"/>
+                    <div style="font-size: 110%; position: absolute; top: 2.5cm; left: 3.4cm; width: 15cm">
+                        <span t-field="o.partner_id.name"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 3.1cm; left: 2.2cm; width: 15cm">
+                    <div style="font-size: 110%; position: absolute; top: 3.3cm; left: 2.2cm; width: 15cm">
                         <span t-esc="a_letras.num_a_letras(o.amount)"/>
-                    </div>
-                    <div t-if="o.no_negociable == True" style="font-size: 110%; position: absolute; top: 5.7cm; left: 2cm">
-                        <span>NO  NEGOCIABLE</span>
                     </div>
 
                     <div style="position: absolute; top: 12.5cm; left: 0.5cm">
@@ -67,8 +64,8 @@
                         </table>
                     </div>
 
-                    <div style="position: absolute; top: 21.6cm; left: 2.2cm">
-                        <span t-field="o.journal_id.bank_id"></span>
+                    <div style="position: absolute; top: 21.7cm; left: 2.2cm">
+                        <span t-field="o.journal_id.bank_id">BANCO</span>
                     </div>
 
                     <div style="position: absolute; top: 21.6cm; left: 12.5cm">
@@ -83,7 +80,7 @@
                         <span t-field="o.journal_id.bank_acc_number"></span>
                     </div>
 
-                    <div style="position: absolute; top: 28.9cm; left: 3cm">
+                    <div style="position: absolute; top: 28.9cm; left: 5cm">
                         <span t-field="o.communication"></span>
                     </div>
 

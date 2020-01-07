@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="reporte_invoice1">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <div style="position: absolute; top: 6.3cm; left: 4.3cm">
+                        <span t-esc="dia(o)"/>
+                    </div>
+                    <div style="position: absolute; top: 6.3cm; left: 7cm">
+                        <span t-esc="mes(o)"/>
+                    </div>
+                    <div style="position: absolute; top: 6.3cm; left: 9cm">
+                        <span t-esc="anio(o)"/>
+                    </div>
+                    <div style="position: absolute; top: 7.4cm; left: 4cm; width: 15cm">
+                        <span style="font-family: monospace!important" t-field="o.partner_id.name"/>
+                    </div>
+                    <div style="position: absolute; top: 7.4cm; left: 22cm">
+                        <span t-field="o.partner_id.vat"/>
+                    </div>
+                    <div style="position: absolute; top: 8.3cm; left: 4cm; width: 13.5cm">
+                        <span t-field="o.partner_id.street"/>
+                    </div>
+                    <div style="position: absolute; top: 23cm; left: 6cm">
+                        <span t-field="o.comment"/>
+                    </div>
+                    
+
+                    <div style="position: absolute; top: 10.7cm; left: 2cm">
+                        <table>
+                            <tbody>
+                                <tr t-foreach="o.invoice_line_ids" t-as="l">
+                                    <td style="width: 4cm; font-size: 110%; padding-right: 0.2cm" class="text-center">
+                                        <span t-field="l.quantity"/>
+                                    </td>
+                                    <td style="width: 11.9cm; font-size: 110%">
+                                        <span t-esc="producto(l.name)"/>
+                                    </td>
+                                    <td style="width: 2.5cm; font-size: 110%" class="text-right">
+                                        <span t-field="l.price_unit"/>
+                                    </td>
+                                    <td style="width: 3.5cm; font-size: 110%" class="text-right">
+                                        <span t-esc="total_linea(l)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="position: absolute; top: 26.9cm; left: 3cm">
+                        <table>
+                            <tbody>
+                                <tr t-foreach="impuesto_impresos(o)" t-as="t">
+                                    <td style="width: 3.0cm; font-size: 130%">
+                                    </td>
+                                    <td style="width: 11.5cm; font-size: 130%">
+                                        <span t-esc="t['nombre']"/>
+                                    </td>
+                                    <td style="width: 7.5cm; font-size: 130%" class="text-right">
+                                        <span t-esc="t['valor']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="position: absolute; top: 25.4cm; left: 21.4cm; font-size: 110%">
+                        <span t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                    </div>
+
+                    <div style="font-size: 110%; text-transform: uppercase; position: absolute; top: 25.4cm; left:4.9cm; width: 20cm">
+                        <span t-esc="a_letras.num_a_letras(o.amount_total)"/>
+                    </div>
+
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
