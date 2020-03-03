@@ -87,8 +87,6 @@
                     <div style="position: absolute; top: 21cm; left: 5cm">
                         <span t-field="o.communication"></span>
                     </div>
-		    
-
 		    <div style="position: absolute; top: 22cm; left: 5cm">
                         NO.  DE  CHEQUE:<span t-field="o.move_name"></span>
                     </div>
