@@ -42,6 +42,8 @@ Este es el módulo para la empresa Domex
         'views/report_saleorder_domex.xml',
         'views/report_stockpicking_domex.xml',
         'views/report_saleordershipping_domex.xml',
+        'views/account_payment_view.xml',
+        'wizard/contrapartida_anticipo.xml',
     ],
     'demo': [],
     'installable': True

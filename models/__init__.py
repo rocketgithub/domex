@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import domex
+from . import domex, account_payment
