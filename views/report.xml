@@ -263,5 +263,13 @@
             name="domex.report_saleordershipping_domex"
         />
 
+        <report
+            id="report_purchase_order_shipping_domex"
+            string="Recepciones de compras Domex"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="domex.report_purchaseordershipping_domex"
+            name="domex.report_purchaseordershipping_domex"
+        />
     </data>
 </openerp>

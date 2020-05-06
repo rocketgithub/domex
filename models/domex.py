@@ -64,3 +64,14 @@ class SaleOrder(models.Model):
             for line in order.order_line:
                 line.price_unit = line.price_unit * line.largo
         return True
+
+class PurchaseOrder(models.Model):
+    _inherit = "purchase.order"
+
+    supplier_order_ref = fields.Char(string='Referencia proveedor')
+    bill_to = fields.Many2one('res.partner', string='Bill to')
+    consigned_to = fields.Many2one('res.partner', string='Consigned to')
+    send_docs_to = fields.Many2one('res.partner', string='Send Docs to')
+    marks = fields.Text(string="Marks")
+    insurance = fields.Char('Insurance')
+    delivery = fields.Char('Delivery')
