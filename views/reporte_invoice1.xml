@@ -60,7 +60,7 @@
                                         <span t-esc="t['nombre']"/>
                                     </td>
                                     <td style="width: 7.5cm; font-size: 130%" class="text-right">
-                                        <span t-esc="t['valor']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                        <span t-esc="t['valor']" t-options='{"widget":"float","precision":2}'/>
                                     </td>
                                 </tr>
 
@@ -69,7 +69,7 @@
                     </div>
 
                     <div style="position: absolute; top: 25cm; left: 22.8cm; font-size: 110%">
-                        <span t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        <span t-field="o.amount_total" t-options='{"widget":"float","precision":2}'/>
                     </div>
 
                     <div style="font-size: 110%; text-transform: uppercase; position: absolute; top: 25cm; left:4.9cm; width: 20cm">
