@@ -10,6 +10,9 @@
                         <group>
                             <field name="cuenta_destino_id"/>
                         </group>
+                        <group>
+                            <field name="diario_id"/>
+                        </group>
                     </group>
                     <footer>
                         <button name="crear_contrapartida" string="Crear" type="object" class="oe_highlight"/>
