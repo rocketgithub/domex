@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="contrasenia_pago">
+        <t t-call="report.html_container">
+                <!-- <t t-foreach="docs" t-as="o"> -->
+                    <div class="article">
+                        <div class="header">
+                            <div class="derecha" style="float:right">
+                                Fecha de emisión <span t-esc="fecha_impresion()" t-options='{"widget": "date"}'/><br/>
+                                Compañia: <span t-esc="user.company_id.name"/>
+                            </div>
+                            <br/>
+                            <div class="centro">
+                                <center><h4>CONTRASEÑA DE PAGO</h4></center>
+                            </div>
+                        </div>
+                        <div class="page">
+                            <t t-set="factura" t-value="_get_facturas(docs)"/>
+                            <table class="table table-condensed" style="border:1px solid black;border-top:1px solid black">
+                                <tr>
+                                    <td>Proveedor:</td>
+                                    <td><span t-esc="factura['nombre']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Ordenes de compras:</td>
+                                    <td><span t-esc="factura['compras']"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Hecho por:</td>
+                                    <td><span t-esc="user.name"/></td>
+                                </tr>
+
+                            </table>
+                            <table class="table table-condensed" style="border:1px solid black;border-top:1px solid black">
+                                <tr>
+                                    <th>No. Documento</th>
+                                    <th>Fecha</th>
+                                    <th>Numero de asiento</th>
+                                    <th>Orden de compra</th>
+                                    <th>Fecha de vencimiento</th>
+                                    <th class="text-right">Monto</th>
+                                    <th>Estado</th>
+                                </tr>
+                                <t t-foreach="factura['facturas']" t-as="fac">
+                                    <tr>
+                                        <td><span t-esc="fac.reference"/></td>
+                                        <td><span t-esc="fac.date_invoice" t-options='{"widget": "date"}'/></td>
+                                        <td><span t-esc="fac.move_id.name"/></td>
+                                        <td><span t-esc="fac.origin"/></td>
+                                        <td>
+                                            <t t-if="fac.date_due">
+                                                <span t-esc="fac.date_due" t-options='{"widget": "date"}'/>
+                                            </t>
+                                            <t t-else="">
+
+                                            </t>
+                                        </td>
+                                        <td class="text-right"><span t-esc="fac.amount_total" t-options='{"widget": "monetary", "display_currency": fac.currency_id}'/></td>
+                                        <td><span t-esc="fac.state"/></td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td colspan="4"/>
+                                    <td style="border-top:1px solid black;"><b>Total</b></td>
+                                    <td class="text-right" style="border-top:1px solid black;"><b><span t-esc="factura['total']" t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/></b></td>
+                                    <td/>
+                                </tr>
+                            </table>
+                            <br/>
+                            <p>
+                                <b>FECHAS LÍMITE PARA PROCESAMIENTO DE FACTURAS DE PROVEEDORES:</b>
+                            </p>
+                            <p>
+                                <b>Facturas de Papel:</b>  Recepción Oficinas Centrales 7 calle 3-24 zona 18, Condominio Interbodegas, Ofibodega Numero 20.
+                                <b>Facturas electrónicas:</b> Enviar correo a contabilidad.grupohr@gmail.com
+
+                            </p>
+                            <p>
+                                <b>Fechas:</b> lunes y miércoles en horario de 9:00 a 12:00 de 14:30 a 16:00. Ultima fecha para recibir facturas 25 de cada mes, en caso sea día inhábil, el inmediato anterior.
+                            </p>
+                            <p>
+                                <b>Documentos para presentar:</b>
+                                    - Orden de Compra
+                                    - Nota de envío
+                                    - Factura
+                            </p>
+                            <p>
+                                <b>Fecha de Pago:</b> Únicamente viernes en horario de 9:00 a 12:00 de 14:30 a 16:00, presentando respectiva contraseña de pago emitida.
+
+                            </p>
+                            <p>
+                                <b>NOTA</b>
+                                    1. Únicamente se emitirán pagos a facturas con contraseña que cumplan
+                                        con los puntos arriba mencionados
+                                    2. Domex, S.A. no se hace responsable por facturas no entregadas al
+                                        departamento contable en el lugar, correo y fecha autorizado.
+
+                            </p>
+                        </div>
+                    </div>
+                <!-- </t> -->
+        </t>
+    </template>
+</odoo>
