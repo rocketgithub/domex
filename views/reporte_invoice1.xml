@@ -4,103 +4,79 @@
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="o">
                 <div class="page">
+                    <div class="oe_structure"/>
 
-                    <div style="font-size: 110%; position: absolute; top: 2.4cm; left: 6.0cm">
-                        GUATEMALA, <span t-field="o.payment_date"/>
+                    <div style="position: absolute; top: 4.1cm; left: 4.3cm">
+                        <span t-esc="dia(o)"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 2.4cm; left: 15.4cm">
-                        <span t-esc="'{0:,.2f}'.format(o.amount)"/>
+                    <div style="position: absolute; top: 4.1cm; left: 7cm">
+                        <span t-esc="mes(o)"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 3.1cm; left: 3.4cm; width: 15cm">
-			<span t-esc="o.nombre_impreso or o.partner_id.name"/>
+                    <div style="position: absolute; top: 4.1cm; left: 9cm">
+                        <span t-esc="anio(o)"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 3.9cm; left: 2.2cm; width: 15cm">
-                        <span t-esc="a_letras.num_a_letras(o.amount)"/>
+                    <div style="position: absolute; top: 5.2cm; left: 4cm; width: 15cm">
+                        <span style="font-family: monospace!important" t-field="o.partner_id.name"/>
                     </div>
-                    <div t-if="o.no_negociable == True" style="font-size: 110%; position: absolute; top: 6.6cm; left: 2cm">
-                        <span>NO  NEGOCIABLE</span>
+                    <div style="position: absolute; top: 5.2cm; left: 21.5cm">
+                        <span t-field="o.partner_id.vat"/>
                     </div>
+                    <div style="position: absolute; top: 6.1cm; left: 4cm; width: 13.5cm">
+                        <span t-field="o.partner_id.street"/>
+                    </div>
+                    <div style="position: absolute; top: 23cm; left: 6cm">
+                        <span t-field="o.comment"/>
+                    </div>
+                    
 
-                    <div style="position: absolute; top: 10.5cm; left: 0.5cm">
+                    <div style="position: absolute; top: 8.7cm; left: 2cm">
                         <table>
-                           <tbody>
-                                <tr t-foreach="o.move_line_ids" t-as="l">
-                                    <td style="width: 1.7cm">
+                            <tbody>
+                                <tr t-foreach="o.invoice_line_ids" t-as="l">
+                                    <td style="width: 4cm; font-size: 110%; padding-right: 0.2cm" class="text-center">
+                                        <span t-field="l.quantity"/>
                                     </td>
-                                    <td style="width: 2cm">
-                                       <span t-field="l.account_id.code"/>
+                                    <td style="width: 14cm; font-size: 110%">
+                                        <span t-esc="producto(l.name)"/>
                                     </td>
-                                    <td style="width: 2cm">
+                                    <td style="width: 2cm; font-size: 110%" class="text-right">
+                                        <span t-field="l.price_unit"/>
                                     </td>
-                                    <td style="width: 11.2cm">
-                                        <span t-field="l.account_id.name"/>
-                                    </td>
-                                    <td style="width: 0.7cm" class="text-right">
-                                        <span t-field="l.debit" t-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/>
-                                    </td>
-                                    <td style="width: 2.5cm">
-                                    </td>
-                                    <td style="width: 0.5cm" class="text-right">
-                                        <span t-field="l.credit" t-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/>
+                                    <td style="width: 3cm; font-size: 110%" class="text-right">
+                                        <span t-esc="total_linea(l)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div style="position: absolute; top: 16.2cm; left: 0.5cm">
+                    <div style="position: absolute; top: 26.9cm; left: 3cm">
                         <table>
-                           <tbody>
-                                <tr>
-                                    <td style="width: 16.3cm">
+                            <tbody>
+                                <tr t-foreach="impuesto_impresos(o)" t-as="t">
+                                    <td style="width: 3.0cm; font-size: 130%">
                                     </td>
-                                    <td style="width: 2.1cm" class="text-right">
-                                        <span t-esc="totales(o)['debito']" t-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/>
+                                    <td style="width: 10.5cm; font-size: 130%">
+                                        <span t-esc="t['nombre']"/>
                                     </td>
-                                    <td style="width: 2.5cm">
-                                    </td>
-                                    <td style="width: 0.5cm" class="text-right">
-                                        <span t-esc="totales(o)['credito']" t-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/>
+                                    <td style="width: 7.5cm; font-size: 130%" class="text-right">
+                                        <span t-esc="t['valor']" t-options='{"widget":"float","precision":2}'/>
                                     </td>
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>
 
-                    <div style="position: absolute; top: 16.2cm; left: 2.2cm">
-                        <span t-field="o.journal_id.bank_id">BANCO</span>
+                    <div style="position: absolute; top: 25cm; left: 22.8cm; font-size: 110%">
+                        <span t-field="o.amount_total" t-options='{"widget":"float","precision":2}'/>
                     </div>
 
-                    <div style="position: absolute; top: 16.2cm; left: 11.5cm">
-                        <span t-field="o.move_name"></span>
-                    </div>
+                    <div style="font-size: 110%; text-transform: uppercase; position: absolute; top: 25cm; left:4.9cm; width: 20cm">
+                        <span t-esc="a_letras.num_a_letras(o.amount_total)"/>
+                    </div
 
-                    <div style="position: absolute; top: 17.6cm; left: 2.2cm">
-                        <span t-field="o.company_id"></span>
-                    </div>
-
-                    <div style="position: absolute; top: 17.6cm; left: 12cm">
-                        <span t-field="o.journal_id.bank_acc_number"></span>
-                    </div>
-
-                    <div style="position: absolute; top: 23cm; left: 3cm">
-                        <span t-field="o.communication"></span>
-                    </div>
-
-                    <div style="position: absolute; top: 17.6cm; left: 17.5cm">
-                        <table>
-                           <tbody>
-                                <tr>
-                                    <td style="width: 0cm">
-                                        <span t-field="user.name"/>
-                                    </td>
-                                    <td style="width: 1">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                    <div class="oe_structure"/>
                 </div>
             </t>
         </t>
