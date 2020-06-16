@@ -5,23 +5,24 @@
             <t t-foreach="docs" t-as="o">
                 <div class="page">
 
-                    <div style="font-size: 110%; position: absolute; top: 2.3cm; left: 6.0cm">
+                    <div style="font-size: 110%; position: absolute; top: 2.5cm; left: 6.0cm">
                         GUATEMALA, <span t-field="o.payment_date"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 2.3cm; left: 16.5cm">
+                    <div style="font-size: 110%; position: absolute; top: 2.5cm; left: 15.5cm">
                         <span t-esc="'{0:,.2f}'.format(o.amount)"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 3cm; left: 3.5cm; width: 15cm">
+                    <div style="font-size: 110%; position: absolute; top: 3.3cm; left: 3.4cm; width: 15cm">
                         <span t-esc="o.nombre_impreso or o.partner_id.name"/>
                     </div>
-                    <div style="font-size: 110%; position: absolute; top: 3.9cm; left: 2.4cm; width: 15cm">
+                    <div style="font-size: 110%; position: absolute; top: 4cm; left: 2.5cm; width: 15cm">
                         <span t-esc="a_letras.num_a_letras(o.amount)"/>
                     </div>
-		    <div t-if="o.no_negociable == True" style="font-size: 110%; position: absolute; top: 5.5; left: 4.4cm">
+		    <div t-if="o.no_negociable == True" style="font-size: 110%; position: absolute; top: 6.4cm; left: 4.4cm">
                            <span>NO  NEGOCIABLE</span>
                     </div>
 
-                    <div style="position: absolute; top: 12.5cm; left: 0.5cm">
+
+                    <div style="position: absolute; top: 10.5cm; left: 0.5cm">
                         <table>
                            <tbody>
                                 <tr t-foreach="o.move_line_ids" t-as="l">
@@ -32,7 +33,7 @@
                                     </td>
                                     <td style="width: 2cm">
                                     </td>
-                                    <td style="width: 12.7cm">
+                                    <td style="width: 11.2cm">
                                         <span t-field="l.account_id.name"/>
                                     </td>
                                     <td style="width: 0.7cm" class="text-right">
@@ -40,7 +41,7 @@
                                     </td>
                                     <td style="width: 2.5cm">
                                     </td>
-                                    <td style="width: 0.7cm" class="text-right">
+                                    <td style="width: 0.5cm" class="text-right">
                                         <span t-field="l.credit" t-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/>
                                     </td>
                                 </tr>
@@ -48,11 +49,11 @@
                         </table>
                     </div>
 
-                    <div style="position: absolute; top: 21.6cm; left: 0.5cm">
+                    <div style="position: absolute; top: 16.2cm; left: 0.5cm">
                         <table>
                            <tbody>
                                 <tr>
-                                    <td style="width: 17.3cm">
+                                    <td style="width: 16.3cm">
                                     </td>
                                     <td style="width: 2.1cm" class="text-right">
                                         <span t-esc="totales(o)['debito']" t-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/>
@@ -67,27 +68,27 @@
                         </table>
                     </div>
 
-                    <div style="position: absolute; top: 21.6cm; left: 2.2cm">
+                    <div style="position: absolute; top: 16.2cm; left: 2.2cm">
                         <span t-field="o.journal_id.bank_id">BANCO</span>
                     </div>
 
-                    <div style="position: absolute; top: 21.6cm; left: 12.5cm">
+                    <div style="position: absolute; top: 16.2cm; left: 11.5cm">
                         <span t-field="o.move_name"></span>
                     </div>
 
-                    <div style="position: absolute; top: 23cm; left: 2.2cm">
+                    <div style="position: absolute; top: 17.6cm; left: 2.2cm">
                         <span t-field="o.company_id"></span>
                     </div>
 
-                    <div style="position: absolute; top: 23cm; left: 12.3cm">
+                    <div style="position: absolute; top: 17.6cm; left: 12cm">
                         <span t-field="o.journal_id.bank_acc_number"></span>
                     </div>
 
-                    <div style="position: absolute; top: 29cm; left: 3.4cm">
+                    <div style="position: absolute; top: 23cm; left: 3cm">
                         <span t-field="o.communication"></span>
                     </div>
 
-                    <div style="position: absolute; top: 22.9cm; left: 18.5cm">
+                    <div style="position: absolute; top: 17.6cm; left: 17.5cm">
                         <table>
                            <tbody>
                                 <tr>
