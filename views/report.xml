@@ -271,5 +271,14 @@
             file="domex.report_purchaseordershipping_domex"
             name="domex.report_purchaseordershipping_domex"
         />
+
+        <report
+            id="report_contrasenia_pago_domex"
+            string="Contraseña de pago"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="domex.contrasenia_pago"
+            name="domex.contrasenia_pago"
+        />
     </data>
 </openerp>

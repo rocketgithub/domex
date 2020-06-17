@@ -74,7 +74,7 @@
 
                     <div style="font-size: 110%; text-transform: uppercase; position: absolute; top: 25cm; left:4.9cm; width: 20cm">
                         <span t-esc="a_letras.num_a_letras(o.amount_total)"/>
-                    </div>
+                    </div
 
                     <div class="oe_structure"/>
                 </div>

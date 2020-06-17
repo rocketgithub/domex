@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="res.groups" id="facturas_usuario">
+            <field name="name">Ver solo sus facturas</field>
+        </record>
+
+    </data>
+</odoo>
