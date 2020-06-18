@@ -24,7 +24,7 @@ class ReportContraseniaPago(models.AbstractModel):
             factura_dic[factura.partner_id.id]['facturas'].append(factura)
         primer_proveedor = next(iter(factura_dic))
         factura_dic = factura_dic[primer_proveedor]
-        factura_dic['compras'] = ','.join(factura_dic['compras'])
+        factura_dic['compras'] = (','.join(factura_dic['compras'])) if factura_dic['compras'][0] != False else ''
         return factura_dic
 
     @api.model
