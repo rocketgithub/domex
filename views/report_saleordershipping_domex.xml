@@ -31,25 +31,25 @@
                     <div class="page">   
                         <table>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;width:150px;text-align: right;font-weight: bold;">CUSTOMER P.O.#: </td>
+                                <td style="width:150px;text-align: right;font-weight: bold;">CUSTOMER P.O.#: </td>
                                 <td style="width:24px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.client_order_ref"/></td>
+                                <td style="padding-left:5px"><span t-field="o.client_order_ref"/></td>
                                 <td style="width:50px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:150px;text-align: right;font-weight: bold;">OUR ORDER No.# </td>
+                                <td style="width:150px;text-align: right;font-weight: bold;">OUR ORDER No.# </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.name"/></td>
+                                <td style="padding-left:5px"><span t-field="o.name"/></td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;text-align: right;font-weight: bold;">CUSTOMER ID#:</td>
+                                <td style="text-align: right;font-weight: bold;">CUSTOMER ID#:</td>
                                 <td></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.partner_id.barcode"/></td>
+                                <td style="padding-left:5px"><span t-field="o.partner_id.barcode"/></td>
                             </tr>
                         </table>
                         <table>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;width:155px;height:75px;text-align: right;​​"><b>CUSTOMER: </b></td>
+                                <td style="width:155px;height:75px;text-align: right;​​"><b>CUSTOMER: </b></td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:700px;padding-left:5px">
+                                <td style="width:700px;padding-left:5px">
                                     <span t-field="o.partner_id.name"/><br/>
                                     <span t-field="o.partner_id.street"/><br/>
                                     <span t-field="o.partner_id.street2"/><br/>
@@ -59,9 +59,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;height:75px;text-align: right;font-weight: bold;">SUPPLIER: </td>
+                                <td style="height:75px;text-align: right;font-weight: bold;">SUPPLIER: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:375px;padding-left:5px">
+                                <td style="width:375px;padding-left:5px">
                                     <span t-field="o.supplier.name"/><br/>
                                     <span t-field="o.supplier.street"/><br/>
                                     <span t-field="o.supplier.street2"/><br/>
@@ -70,9 +70,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;height:75px;text-align: right;font-weight: bold;">SHIP TO: </td>
+                                <td style="height:75px;text-align: right;font-weight: bold;">SHIP TO: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:700px;padding-left:5px">
+                                <td style="width:700px;padding-left:5px">
                                     <span t-field="o.partner_id.name"/><br/>
                                     <span t-field="o.partner_id.street"/><br/>
                                     <span t-field="o.partner_id.street2"/><br/>
@@ -82,9 +82,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;height:75px;text-align: right;font-weight: bold;">BILL TO: </td>
+                                <td style="height:75px;text-align: right;font-weight: bold;">BILL TO: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:375px;padding-left:5px">
+                                <td style="width:375px;padding-left:5px">
                                     <span t-field="o.bill_to.name"/><br/>
                                     <span t-field="o.bill_to.street"/><br/>
                                     <span t-field="o.bill_to.street2"/><br/>
@@ -94,9 +94,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;height:75px;text-align: right;font-weight: bold;">CONSIGNED TO: </td>
+                                <td style="height:75px;text-align: right;font-weight: bold;">CONSIGNED TO: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:375px;padding-left:5px">
+                                <td style="width:375px;padding-left:5px">
                                     <span t-field="o.consigned_to.name"/><br/>
                                     <span t-field="o.consigned_to.street"/><br/>
                                     <span t-field="o.consigned_to.street2"/><br/>
@@ -106,9 +106,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;height:75px;text-align: right;font-weight: bold;">SEND DOCS TO: </td>
+                                <td style="height:75px;text-align: right;font-weight: bold;">SEND DOCS TO: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;width:375px;padding-left:5px">
+                                <td style="width:375px;padding-left:5px">
                                     <span t-field="o.send_docs_to.name"/><br/>
                                     <span t-field="o.send_docs_to.street"/><br/>
                                     <span t-field="o.send_docs_to.street2"/><br/>
@@ -118,24 +118,24 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;text-align: right;font-weight: bold;">PAYMENT TERMS: </td>
+                                <td style="text-align: right;font-weight: bold;">PAYMENT TERMS: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.payment_term_id"/></td>
+                                <td style="padding-left:5px"><span t-field="o.payment_term_id"/></td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;text-align: right;font-weight: bold;">INSURANCE: </td>
+                                <td style="text-align: right;font-weight: bold;">INSURANCE: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.insurance"/></td>
+                                <td style="padding-left:5px"><span t-field="o.insurance"/></td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;text-align: right;font-weight: bold;">DELIVERY: </td>
+                                <td style="text-align: right;font-weight: bold;">DELIVERY: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.delivery"/></td>
+                                <td style="padding-left:5px"><span t-field="o.delivery"/></td>
                             </tr>
                             <tr>
-                                <td style="border:1px solid black;border-collapse: collapse;text-align: right;font-weight: bold;">INCOTERMS: </td>
+                                <td style="text-align: right;font-weight: bold;">INCOTERMS: </td>
                                 <td style="width:25px;"></td>
-                                <td style="border:1px solid black;border-collapse: collapse;padding-left:5px"><span t-field="o.incoterm"/></td>
+                                <td style="padding-left:5px"><span t-field="o.incoterm"/></td>
                             </tr>
                         </table>
                         <br/>
@@ -167,14 +167,14 @@
                         </table>
                         <table>
                             <tr>
-                                <td style="text-align: right;font-weight: bold;border: 1px solid black;height:75px;width:155px;">MARKS:</td>
+                                <td style="text-align: right;font-weight: bold;height:75px;width:155px;">MARKS:</td>
                                 <td style="width:25px;"></td>
-                                <td style="border: 1px solid black;width:375px;padding-left:5px"><span t-field="o.marks"/></td>
+                                <td style="width:375px;padding-left:5px"><span t-field="o.marks"/></td>
                             </tr>
                             <tr>
-                                <td style="text-align: right;font-weight: bold;border: 1px solid black;height:75px;width:155px;">NOTES:</td>
+                                <td style="text-align: right;font-weight: bold;height:75px;width:155px;">NOTES:</td>
                                 <td style="width:25px;"></td>
-                                <td style="border: 1px solid black;width:700px;padding-left:5px">
+                                <td style="width:700px;padding-left:5px">
                                     <span t-field="o.note"/>                                   
                                 </td>                                
                             </tr>
