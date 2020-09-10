@@ -39,6 +39,7 @@ Este es el módulo para la empresa Domex
         'views/reporte_voucher20.xml',
         'views/reporte_voucher21.xml',
         'views/reporte_voucher22.xml',
+        'views/reporte_voucher23.xml',
         'views/contrasenia_pago.xml',
         'views/report_saleorder_domex.xml',
         'views/report_stockpicking_domex.xml',
@@ -48,6 +49,9 @@ Este es el módulo para la empresa Domex
         'wizard/contrapartida_anticipo.xml',
         'security/domex_groups.xml',
         'security/domex_security.xml',
+        'views/report_oc_importaciones_almex.xml',
+        'views/report_oc_importaciones_domex.xml',
+        'views/report_oc_importaciones_aplytek.xml',
     ],
     'demo': [],
     'installable': True
