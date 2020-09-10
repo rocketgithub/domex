@@ -48,6 +48,9 @@ Este es el módulo para la empresa Domex
         'wizard/contrapartida_anticipo.xml',
         'security/domex_groups.xml',
         'security/domex_security.xml',
+        'views/report_oc_importaciones_almex.xml',
+        'views/report_oc_importaciones_domex.xml',
+        'views/report_oc_importaciones_aplytek.xml',
     ],
     'demo': [],
     'installable': True

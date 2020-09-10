@@ -280,5 +280,33 @@
             file="domex.contrasenia_pago"
             name="domex.contrasenia_pago"
         />
+        
+        <report
+            id="report_purchase_order_importacion_almex"
+            string="O.C. Importaciones ALMEX"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="domex.report_oc_importaciones_almex"
+            name="domex.report_oc_importaciones_almex"
+        />
+        
+        <report
+            id="report_purchase_order_importacion_domex"
+            string="O.C. Importaciones DOMEX"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="domex.report_oc_importaciones_domex"
+            name="domex.report_oc_importaciones_domex"
+        />
+        
+        <report
+            id="report_purchase_order_importacion_aplytek"
+            string="O.C. Importaciones APLYTEK"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="domex.report_oc_importaciones_aplytek"
+            name="domex.report_oc_importaciones_aplytek"
+        />
+        
     </data>
 </openerp>
