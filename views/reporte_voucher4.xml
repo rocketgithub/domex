@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="reporte_voucher4">
-        <div style="font-size: 110%; position: absolute; top: 2.5cm; left: 6.0cm">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+
+                    <div style="font-size: 110%; position: absolute; top: 2.5cm; left: 6.0cm">
                         GUATEMALA, <span t-field="o.payment_date"/>
                     </div>
                     <div style="font-size: 110%; position: absolute; top: 2.5cm; left: 15.5cm">
