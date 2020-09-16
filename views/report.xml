@@ -308,5 +308,59 @@
             name="domex.report_oc_importaciones_aplytek"
         />
         
+        <report
+            id="report_sale_order_almex"
+            string="Cotización Almex"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="domex.report_so_almex"
+            name="domex.report_so_almex"
+        />
+        
+        <report
+            id="report_sale_order_domex"
+            string="Cotización Domex"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="domex.report_so_domex"
+            name="domex.report_so_domex"
+        />
+        
+        <report
+            id="report_sale_order_aplytek"
+            string="Cotización Aplytek"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="domex.report_so_aplytek"
+            name="domex.report_so_aplytek"
+        />
+        
+        <report
+            id="report_stock_picking_envio_almex"
+            string="Envio Almex"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="domex.report_envio_almex"
+            name="domex.report_envio_almex"
+        />
+        
+        <report
+            id="report_stock_picking_envio_domex"
+            string="Envio Domex"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="domex.report_envio_domex"
+            name="domex.report_envio_domex"
+        />
+        
+        <report
+            id="report_stock_picking_envio_aplytek"
+            string="Envio Aplytek"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="domex.report_envio_aplytek"
+            name="domex.report_envio_aplytek"
+        />
+        
     </data>
 </openerp>

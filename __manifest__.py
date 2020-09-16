@@ -51,6 +51,12 @@ Este es el módulo para la empresa Domex
         'views/report_oc_importaciones_almex.xml',
         'views/report_oc_importaciones_domex.xml',
         'views/report_oc_importaciones_aplytek.xml',
+        'views/report_so_almex.xml',
+        'views/report_so_domex.xml',
+        'views/report_so_aplytek.xml',
+        'views/report_envio_almex.xml',
+        'views/report_envio_domex.xml',
+        'views/report_envio_aplytek.xml',
     ],
     'demo': [],
     'installable': True
