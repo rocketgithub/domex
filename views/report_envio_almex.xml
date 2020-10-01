@@ -44,13 +44,15 @@
                                 <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">DESCRIPCION</th></b>
                             </tr>
                             <tbody>
+                                <t t-set="numero" t-value="1"/>
                                 <t t-foreach="o.pack_operation_product_ids" t-as="l">
                                     <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
-                                        <td style="border-left: 1px solid grey;"></td>
+                                        <td style="border-left: 1px solid grey;"><span t-esc="numero"/></td>
                                         <td style="text-align: center;"><span t-esc="l.product_uom_id.name"/></td>
                                         <td style="text-align: center;"><span t-esc="l.product_qty"/></td>
                                         <td style="border-right: 1px solid grey;text-align: center;"><span t-esc="l.product_id.name"/></td>
                                     </tr>
+                                    <t t-set="numero" t-value="numero + 1"/>
                                 </t>
                             </tbody>
                         </table>

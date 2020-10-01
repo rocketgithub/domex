@@ -19,8 +19,7 @@
                             </td>
                             <td style="border-left: 2px solid grey;">
                                 <br/>
-                                <h4>ENVIO
-                                <br/>OT: <span t-esc="o.name"/>
+                                <h4>ENVIO: <span t-esc="o.name"/>
                                 <br/>COTIZACIÓN: <span t-esc="o.origin"/> </h4>
                             </td>
                         </tr>
@@ -35,7 +34,7 @@
                             <b>FECHA:</b> <span t-field="o.min_date" t-field-options='{"format": "d/m/Y"}'/>
                             <br/><b>DE:</b> <span t-esc="o.company_id.name"/>
                             <br/><b>PARA:</b> <span t-esc="o.partner_id.name"/>
-                            <br/><b>PROYETO:</b>
+                            <br/><b>PROYETO:</b> <span t-esc="o.sale_id.proyecto"/>
                         </div>
                         <br/>
                         Por este medio se hace constar la entrega de los materiales descritos a continuación en perfecto estado y se exime a Aplytek, S.A. de cualquier reclamo posterior
@@ -44,17 +43,19 @@
                             <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
                                 <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">NO.</th>
                                 <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CANTIDAD</th>
-                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">DESARROLLO</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">LONGITUD</th>
                                 <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">DESCRIPCION</th></b>
                             </tr>
                             <tbody>
-                                <t t-foreach="o.move_lines" t-as="l">
+                                <t t-set="numero" t-value="1"/>
+                                <t t-foreach="o.pack_operation_product_ids" t-as="l">
                                     <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
-                                        <td style="border-left: 1px solid grey;"></td>
-                                        <td style="text-align: center;"><span t-esc="l.product_uom_qty"/></td>
-                                        <td style="text-align: center;"><span t-esc="l.state"/></td>
+                                        <td style="border-left: 1px solid grey;"><span t-esc="numero"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.qty_done"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.pack_lot_ids.lot_id.name"/></td>
                                         <td style="border-right: 1px solid grey;text-align: center;"><span t-esc="l.product_id.name"/></td>
                                     </tr>
+                                    <t t-set="numero" t-value="numero + 1"/>
                                 </t>
                                 <tr>
                                     <td colspan="4" style="border: 1px solid grey; height: 50px">OBSERVACIONES:</td>
@@ -68,15 +69,12 @@
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
                             <tr>
-                                <td style="border: 1px solid grey;">ENTREGA: <br/>FECHA: <br/>HORA: </td>
+                                <td style="border: 1px solid grey;">ENTREGA: <span t-field="o.move_type"/><br/>FECHA: <br/>HORA: </td>
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
                         </table> 
                         
                         <table class="table table-condensed" style="border-collapse: collapse;">
-                            <tr>
-                                <td style="border: 1px solid grey; padding-left:200px; height: 75px">AUTORIZA:</td>
-                            </tr>
                             <tr>
                                 <td style="border: 1px solid grey; padding-left:550px; height: 75px">FIRMA:</td>
                             </tr>
