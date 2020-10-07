@@ -23,7 +23,7 @@
                                     <td>
                                         <br/>
                                         <b>FECHA DE EMISIÓN</b> <span t-esc="fecha_impresion()" t-options='{"widget": "date"}'/>
-                                        <br/><b>CONTASEÑA NO.</b> <span t-field="docs.name"/> 
+                                        <br/><b>CONTASEÑA NO.</b> <span t-field="docs.number"/> 
                                     </td>
                                 </tr>
                             </table>
@@ -110,11 +110,11 @@
                             <br/>2. No se entregarán cheque de pago sin contraseña
                             <br/>3. Aplytek, S.A. no se hace responsable por facturas no entregadas al
                                     departamento contable en el lugar, correo y fecha autorizado.
-                            <br/>
+                            <br/><br/><br/>
                             
-                             <table class="table table-condensed;">
+                            <table class="table table-condensed;">
                                 <tr>
-                                    <td>
+                                    <td style="border-top: 1px solid grey;">
                                         El presente perderá efecto y valor en el momento que Aplytek, S.A. realice el pago mediante cheque o transferencia. El comprobante de depósito o transferencia elemento emitido por el banco será suficiente para dejar sin efecto la presente contraseña de pago y liberar a Aplytel, S.A.  de su responsabilidad por virtud del mismo.
                                         <br/>
                                         La presente contraseña de pago podría aplicar retenciones de ley.
