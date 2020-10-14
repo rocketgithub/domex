@@ -26,12 +26,12 @@
                     </table>
                 </div>
                 
-                
+<!--                t-field-options='{"format": "dd/mm/Y"}'-->
                 <t t-call="report.internal_layout">
                     <div class="page"> 
                         <br/><br/><br/><br/>
                         <div>
-                            <b>FECHA:</b> <span t-field="o.min_date" t-field-options='{"format": "d/m/Y"}'/>
+                            <b>FECHA:</b> 1. <span t-field="o.min_date"/> 2. <span t-field="o.date_done"/> 3. <span t-field="o.date"/> 4. <span t-field="o.max_date"/>
                             <br/><b>DE:</b> <span t-esc="o.company_id.name"/>
                             <br/><b>PARA:</b> <span t-esc="o.partner_id.name"/>
                             <br/><b>PROYETO:</b> <span t-esc="o.sale_id.proyecto"/>
@@ -76,7 +76,7 @@
                         
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr>
-                                <td style="border: 1px solid grey; padding-left:550px; height: 75px">FIRMA:</td>
+                                <td style="border: 1px solid grey; padding-left:550px; height: 75px">FIRMA AUTORIZACIÓN:</td>
                             </tr>
                         </table> 
                         

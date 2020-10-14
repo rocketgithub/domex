@@ -7,8 +7,10 @@ from datetime import date
 import logging
 # import odoo.addons.l10n_gt_extra.a_letras
 
-class ReportContraseniaPago(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago'
+class ReportContraseniaPagoAplytek(models.AbstractModel):
+    _name = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = ''
 
     def fecha_impresion(self):
         fecha = str(datetime.datetime.strptime(str(date.today()), '%Y-%m-%d').date())
@@ -39,4 +41,47 @@ class ReportContraseniaPago(models.AbstractModel):
             'fecha_impresion': self.fecha_impresion,
             '_get_facturas': self._get_facturas,
         }
-        return self.env['report'].render('domex.contrasenia_pago', docargs)
+        return self.env['report'].render(self.nombre_reporte, docargs)
+
+
+class ReportContraseniaPagoAplytek(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_aplytek'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_aplytek'
+
+class ReportContraseniaPagoLejaim(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_lejaim'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_lejaim'
+    
+class ReportContraseniaPagoAxir(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_axir'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_axir'
+
+class ReportContraseniaPagoKinetics(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_kinetics'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_kinetics'
+    
+class ReportContraseniaPagoDomex(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_domex'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_domex'
+
+class ReportContraseniaPagoAlmex(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_almex'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_almex'
+    
+class ReportContraseniaPagoCapex(models.AbstractModel):
+    _name = 'report.domex.contrasenia_pago_capex'
+    _inherit = 'domex.abstract.contrasenia_pago'
+    
+    nombre_reporte = 'domex.contrasenia_pago_capex'
