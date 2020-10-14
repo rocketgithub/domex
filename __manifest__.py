@@ -39,6 +39,7 @@ Este es el módulo para la empresa Domex
         'views/reporte_voucher20.xml',
         'views/reporte_voucher21.xml',
         'views/reporte_voucher22.xml',
+        'views/reporte_voucher23.xml',
         'views/contrasenia_pago_aplytek.xml',
         'views/contrasenia_pago_lejaim.xml',
         'views/contrasenia_pago_axir.xml',
