@@ -184,3 +184,9 @@ class ReportVoucher22(models.AbstractModel):
     _inherit = 'domex.abstract.reporte_voucher'
 
     nombre_reporte = 'domex.reporte_voucher22'
+
+class ReportVoucher23(models.AbstractModel):
+    _name = 'report.domex.reporte_voucher23'
+    _inherit = 'domex.abstract.reporte_voucher'
+
+    nombre_reporte = 'domex.reporte_voucher23'

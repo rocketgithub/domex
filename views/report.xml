@@ -237,6 +237,15 @@
         />
 
         <report
+            id="domex_account_voucher23"
+            string="Nuevo 15"
+            model="account.payment"
+            report_type="qweb-pdf"
+            file="domex.reporte_voucher23"
+            name="domex.reporte_voucher23"
+        />
+
+        <report
             id="report_sale_order_domex"
             string="Cotizacion Domex"
             model="sale.order"
