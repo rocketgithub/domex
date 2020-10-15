@@ -9,8 +9,9 @@ Este es el módulo para la empresa Domex
 """,
     'author': 'Rodrigo Fernandez',
     'website': 'http://solucionesprisma.com/',
-    'depends': ['account','stock','mrp','sale_stock', 'purchase'],
+    'depends': ['account','stock','mrp','sale_stock', 'purchase', 'report'],
     'data': [
+        'data/report_paperformat_data.xml',
         'views/domex_view.xml',
         'views/report.xml',
         'views/reporte_invoice1.xml',

@@ -95,6 +95,11 @@
                     <field name="delivery"/>
                     <field name="lugar_entrega"/>
                     <field name="tiempo_estimado_entrega"/>
+                    <field name="medidas"/>
+                    <field name="oferta_por"/>
+                    <field name="no_incluyen"/>
+                    <field name="incluyen"/>
+                    <field name="tiempo_instalacion"/>
                 </group>
            </field>
         </record>

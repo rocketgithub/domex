@@ -396,6 +396,7 @@
             report_type="qweb-pdf"
             file="domex.report_so_aplytek"
             name="domex.report_so_aplytek"
+            paperformat="domex.paperformat_aplytek_so"
         />
         
         <report
