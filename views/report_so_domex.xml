@@ -32,32 +32,30 @@
                         <table  class="table table-condensed" style="border-style: none;">
                             <tr style="vertical-align: bottom;">
                                 <td style="width:80px;border-top: none;">CLIENTE:</td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.partner_id"/></td>
-                                <td style="width:100px;border-top: none">ATENCIÓN A:</td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion"/></td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"></td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"></td>
+                                <td colspan="2" style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.partner_id"/></td>
+                                <td style="width:100px;border-top: none;">ATENCIÓN A:</td>
+                                <td colspan="3" style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion.name"/></td>
                             </tr>
                             <tr style="vertical-align: bottom;">
                                 <td style="width:97px;border-top: none;">PROYECTO:</td>
                                 <td style="border-bottom: 1px solid grey;"><span t-field="o.proyecto"/></td>
-                                <td style="width:50px;border-top: none">TEL:</td>
-                                <td style="border-bottom: 1px solid grey;"><span t-field="o.partner_id.phone"/></td>
+                                <td style="width:50px;">TEL:</td>
+                                <td style="border-bottom: 1px solid grey;border-top: none;"><span t-field="o.atencion.phone"/></td>
                                 <td style="width:70px;">EMAIL:</td>
-                                <td style="border-bottom: 1px solid grey;"><span t-field="o.partner_id.email"/></td>
+                                <td style="border-bottom: 1px solid grey; width:220px"><span t-field="o.atencion.email"/></td>
                             </tr>
                         </table>
                         
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
-                                <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CÓDIGO</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CÓDIGO</th>
                                 <th style="border: 1px solid grey;vertical-align: middle;text-align: center;width:150px;">DESCRIPCIÓN</th>
                                 <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">ANCHO</th>
                                 <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">LARGO</th>
                                 <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">U.M.</th>
                                 <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CANTIDAD</th>
-                                <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">PRECIO</th>
-                                <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">SUBTOTAL</th></b>
+                                <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">PRECIO UNITARIO</th>
+                                <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">SUBTOTAL</th>
                             </tr>
                             <tbody>
                                 <t t-foreach="o.order_line" t-as="l">
@@ -78,59 +76,66 @@
                                     <td style="border-top: 1px solid grey;border-right: 1px solid grey;text-align: right;"><span t-esc="o.amount_untaxed"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                                 <tr style="vertical-align: middle;">
-                                    <td colspan="6" style="border-left: 1px solid grey; border-top: 1px solid white;font-size: 13px;">TIEMPO DE ENTREGA: <span t-esc="o.delivery"/></td>
+                                    <td colspan="6" style="border-left: 1px solid grey; border-top: 1px solid white;font-size: 13px;">TIEMPO DE ENTREGA: <span t-esc="o.tiempo_estimado_entrega"/></td>
                                     <td style="text-align: right;border-top: 1px solid white;"><b>IMPUESTOS</b></td>
                                     <td style="border-right: 1px solid grey;border-right: 1px solid grey;text-align: right;border-top: 1px solid white;"><span t-esc="o.amount_tax"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:20px;">
-                                    <td colspan="6" style="border-left: 1px solid grey;border-top: 1px solid white;"></td>
+                                    <td colspan="6" style="border-left: 1px solid grey;border-top: 1px solid white;font-size: 13px;">FORMA DE PAGO: <span t-esc="o.payment_term_id.name"/></td>
                                     <td style="text-align: right;border-top: 1px solid white;"><b>TOTAL</b></td>
                                     <td style="border-right: 1px solid grey;border-right: 1px solid grey;text-align: right;border-top: 1px solid white;"><span t-esc="o.amount_total"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                             </tbody>
                         </table>
-                        Notas
                         
-                        <table class="table table-condensed" style="border-collapse: collapse; font-size: 12px;">
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none; width:40px;"></td>
-                                <td style="text-align:left;border-top: none;">1. Forma de pago: Contado, al confirmar orden.</td>
-                                <td style="padding-left:5px;border-top: none;">6. El precio total del proyecto es solo de materiales no incluye el servicio de      instalación.</td>
-                                <td style="border-top: none;width:20px;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:left;border-top: none;">2. El pago es unicamente con cheque a nombre de Domex, S.A. o deposito directo a las cuentas Domex</td>
-                                <td style="padding-left:5px;border-top: none;">7. Vigencia de la oferta, 5 días</td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:left;border-top: none;">3. Numeros de cuentas: G&amp;T: 18-0009222-1, BI: 049-010997-2, Banrural: 3402027254, Bac: 900497702</td>
-                                <td style="padding-left:5px;border-top: none;">8. El precio total de la cotización puede variar con rectificacion de medidas en obra o confirmacion de planos finales.</td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:left;border-top: none;">4. Precios incluyen: IVA.</td>
-                                <td style="padding-left:5px;border-top: none;">9. El precio total de la cotización esta sujeto a cambios sin previo aviso.</td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:left;border-top: none;">5. Precios no incluyen: <br/>El precio total del proyecto no incluye costo de fianzas ni contratos</td>
-                                <td style="padding-left:5px;border-top: none;"></td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                        </table> 
-                        <br/><br/><br/>
+                        
+                        <div style="border: 1px solid grey;">
+                             Notas:
+
+                            <table class="table table-condensed" style="border-collapse: collapse; font-size: 12px;">
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none; width:40px;"></td>
+                                    <td style="text-align:left;border-top: none;">1. Forma de pago: Contado, al confirmar orden.</td>
+                                    <td style="padding-left:5px;border-top: none;">6. El precio total del proyecto es solo de materiales no incluye el servicio de      instalación.</td>
+                                    <td style="border-top: none;width:20px;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">2. El pago es unicamente con cheque a nombre de Domex, S.A. o deposito directo a las cuentas Domex</td>
+                                    <td style="padding-left:5px;border-top: none;">7. Vigencia de la oferta, 5 días</td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">3. Numeros de cuentas: G&amp;T: 18-0009222-1, BI: 049-010997-2, Banrural: 3402027254, Bac: 900497702</td>
+                                    <td style="padding-left:5px;border-top: none;">8. El precio total de la cotización puede variar con rectificacion de medidas en obra o confirmacion de planos finales.</td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">4. Precios incluyen: IVA.</td>
+                                    <td style="padding-left:5px;border-top: none;">9. El precio total de la cotización esta sujeto a cambios sin previo aviso.</td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">5. Precios no incluyen: <br/>El precio total del proyecto no incluye costo de fianzas ni contratos</td>
+                                    <td style="padding-left:5px;border-top: none;"></td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                            </table> 
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="footer text-center">
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr style="vertical-align: middle;">
                                 <td style="border-top: 1px solid grey; border-left: 1px solid grey;width:430px;"></td>
                                 <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
                             </tr>
                             <tr style="height: 60px">
-                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> Asesor de proyectos <br/>(502) 3001 -3002 <br/>Contacto@gmail.com</td>
+                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-esc="user.name"/><br/><span t-esc="user.phone"/> <br/><span t-esc="user.email"/></td>
                                 <td style="border: 1px solid grey;"></td>
                             </tr>
                             <tr>
@@ -138,9 +143,9 @@
                                 <td style="font-size: 11px;text-align:center;">(firma y sello)</td>
                             </tr>
                         </table>
-                        
-                        
+                        <br/><br/><br/>
                     </div>
+                    
                 </t>
             </t>
 </template>

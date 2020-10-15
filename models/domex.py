@@ -46,7 +46,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     proyecto = fields.Char('Proyecto')
-    atencion = fields.Char('Atención')
+    atencion = fields.Many2one('res.partner', string='Atención')
     supplier = fields.Many2one('res.partner', string='Supplier')
     bill_to = fields.Many2one('res.partner', string='Bill to')
     consigned_to = fields.Many2one('res.partner', string='Consigned to')
@@ -57,7 +57,12 @@ class SaleOrder(models.Model):
     comision = fields.Float('Comision de ventas')
     lugar_entrega = fields.Char('Lugar de entrega')
     tiempo_estimado_entrega = fields.Char('Tiempo estimado de entrega')
-
+    medidas = fields.Char('Medidas')
+    oferta_por = fields.Char("Oferta por") 
+    no_incluyen = fields.Text("Precios no incluyen")
+    incluyen = fields.Char("Precios incluyen")
+    tiempo_instalacion = fields.Char("Tiempo de instalación")
+    
     @api.multi
     def recalcular_totales(self):
         for order in self:

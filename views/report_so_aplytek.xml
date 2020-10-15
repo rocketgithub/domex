@@ -32,19 +32,17 @@
                         <table  class="table table-condensed" style="border-style: none;">
                             <tr style="vertical-align: bottom;">
                                 <td style="width:100px;border-top: none;">ATENCIÓN A:</td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion"/></td>
-                                <td style="width:80px;border-top: none">CLIENTE:</td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.partner_id"/></td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"></td>
-                                <td style="border-bottom: 1px solid grey;border-top: none"></td>
+                                <td colspan="2" style="width:150px; border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion.name"/></td>
+                                <td style="width:95px;border-top: none">CLIENTE:</td>
+                                <td colspan="3" style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.partner_id"/></td>
                             </tr>
                             <tr style="vertical-align: bottom;">
                                 <td style="width:97px;border-top: none;">PROYECTO:</td>
                                 <td style="border-bottom: 1px solid grey;"><span t-field="o.proyecto"/></td>
-                                <td style="width:50px;border-top: none">TEL:</td>
-                                <td style="border-bottom: 1px solid grey;"><span t-field="o.partner_id.phone"/></td>
+                                <td style="width:50px;">TEL:</td>
+                                <td style="border-bottom: 1px solid grey;border-top: none;"><span t-field="o.atencion.phone"/></td>
                                 <td style="width:70px;">EMAIL:</td>
-                                <td style="border-bottom: 1px solid grey;"><span t-field="o.partner_id.email"/></td>
+                                <td style="border-bottom: 1px solid grey; width:230px"><span t-field="o.atencion.email"/></td>
                             </tr>
                         </table>
                         <br/>
@@ -53,7 +51,7 @@
                             <tr>
                                 <td style="border-top: none; border-left: 1px solid grey">
                                     Estimado Sr. Gómez 
-                                    <br/>De acuerdo a ______________________________ a continuación tenemos el agrado de presentarle nuestra oferta por ______________________________ de los materiales para el proyecto indicado en referencia, la cual comprende:
+                                    <br/>De acuerdo a <u><span t-esc="o.medidas"/></u> a continuación tenemos el agrado de presentarle nuestra oferta por <u><span t-esc="o.oferta_por"/></u> de los materiales para el proyecto indicado en referencia, la cual comprende:
                                 </td>
                             </tr>
                         </table>
@@ -71,7 +69,7 @@
                                 <t t-foreach="o.order_line" t-as="l">
                                     <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
                                         <td style="border-left: 1px solid grey;"><span t-esc="l.product_id.code"/></td>
-                                        <td><span t-esc="l.product_id.name"/></td>
+                                        <td><span t-esc="l.name"/></td>
                                         <td><span t-esc="l.product_uom.name"/></td>
                                         <td style="text-align: center;"><span t-esc="l.product_uom_qty"/></td>
                                         <td style="text-align: right;"><span t-esc="l.price_unit"  t-options='{"widget":"float","precision":2}'/></td>
@@ -80,7 +78,7 @@
                                 </t>
                                 <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:25px;">
                                     <td colspan="4" style="border-top: 1px solid grey;border-left: 1px solid grey;"></td>
-                                    <td style="border-top: 1px solid grey;text-align: right;"><b>TOTAL BASE</b></td>
+                                    <td style="border-top: 1px solid grey;text-align: right;width:105px"><b>TOTAL BASE</b></td>
                                     <td style="border-top: 1px solid grey;border-right: 1px solid grey;text-align: right;"><span t-esc="o.amount_untaxed"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                                 <tr style="vertical-align: middle;">
@@ -95,6 +93,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
+                    </div>
+                    
+                    <div class="footer text-center">
                         Notas
                         
                         <table class="table table-condensed" style="border-collapse: collapse;">
@@ -110,7 +112,7 @@
                                 <td style="border-top: none;"></td>
                                 <td style="text-align:center;border-top: none;">2. Forma de pago:</td>
                                 <td style="padding-left:5px;border-top: none;"><span t-field="o.payment_term_id"/></td>
-                                <td style="text-align:center;border-top: none;font-size: 10px;">- Licencias de construcción<br/>- Gastos de contratos, timbres, fianzas, etc.<br/>- Seguros</td>
+                                <td style="text-align:center;border-top: none;font-size: 10px;"><span t-field="o.no_incluyen"/></td>
                                 <td style="padding-left:5px;border-top: none;"></td>
                                 <td style="border-top: none;"></td>
                             </tr>
@@ -125,9 +127,9 @@
                             <tr style="vertical-align: middle;">
                                 <td style="border-top: none;"></td>
                                 <td style="text-align:center;border-top: none;">4. Precios incluyen:</td>
-                                <td style="padding-left:5px;border-top: none;"></td>
+                                <td style="padding-left:5px;border-top: none;"><span t-field="o.incluyen"/></td>
                                 <td style="text-align:center;border-top: none;">7. Tiempo de instalación:</td>
-                                <td style="padding-left:5px;border-top: none; "></td>
+                                <td style="padding-left:5px;border-top: none; "><span t-field="o.tiempo_instalacion"/></td>
                                 <td style="border-top: none;"></td>
                             </tr>
                         </table> 
@@ -146,7 +148,7 @@
                                 <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
                             </tr>
                             <tr style="height: 60px">
-                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> Ing. Rafael M. Rich<br/>(502) 3001 -3002<br/>rafrich@aplytek.com </td>
+                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-esc="user.name"/><br/><span t-esc="user.phone"/> <br/><span t-esc="user.email"/></td>
                                 <td style="border: 1px solid grey;"></td>
                             </tr>
                             <tr>
@@ -154,8 +156,8 @@
                                 <td style="font-size: 11px;text-align:center;">(firma y sello)</td>
                             </tr>
                         </table>
-                        
                     </div>
+                        
                 </t>
             </t>
 </template>
