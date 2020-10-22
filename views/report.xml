@@ -280,69 +280,28 @@
             file="domex.report_purchaseordershipping_domex"
             name="domex.report_purchaseordershipping_domex"
         />
-
+        
+        
         <report
-            id="report_contrasenia_pago_aplytek"
-            string="Contraseña de pago Aplytek"
+            id="report_contrasenias_pago"
+            string="Contraseña de pago"
             model="account.invoice"
             report_type="qweb-pdf"
-            file="domex.contrasenia_pago_aplytek"
-            name="domex.contrasenia_pago_aplytek"
+            file="domex.contrasenias_pago"
+            name="domex.contrasenias_pago"
+            menu="False"
         />
         
         <report
-            id="report_contrasenia_pago_lejaim"
-            string="Contraseña de pago Lejaim"
-            model="account.invoice"
+            id="report_purchase_orders"
+            string="Ordenes de Compra"
+            model="purchase.order"
             report_type="qweb-pdf"
-            file="domex.contrasenia_pago_lejaim"
-            name="domex.contrasenia_pago_lejaim"
+            file="domex.purchase_orders"
+            name="domex.purchase_orders"
+            menu="False"
         />
         
-        <report
-            id="report_contrasenia_pago_axir"
-            string="Contraseña de pago Axir"
-            model="account.invoice"
-            report_type="qweb-pdf"
-            file="domex.contrasenia_pago_axir"
-            name="domex.contrasenia_pago_axir"
-        />
-        
-        <report
-            id="report_contrasenia_pago_kinetics"
-            string="Contraseña de pago Kinetics"
-            model="account.invoice"
-            report_type="qweb-pdf"
-            file="domex.contrasenia_pago_kinetics"
-            name="domex.contrasenia_pago_kinetics"
-        />
-        
-        <report
-            id="report_contrasenia_pago_domex"
-            string="Contraseña de pago Domex"
-            model="account.invoice"
-            report_type="qweb-pdf"
-            file="domex.contrasenia_pago_domex"
-            name="domex.contrasenia_pago_domex"
-        />
-        
-        <report
-            id="report_contrasenia_pago_almex"
-            string="Contraseña de pago Almex"
-            model="account.invoice"
-            report_type="qweb-pdf"
-            file="domex.contrasenia_pago_almex"
-            name="domex.contrasenia_pago_almex"
-        />
-        
-        <report
-            id="report_contrasenia_pago_capex"
-            string="Contraseña de pago Capex"
-            model="account.invoice"
-            report_type="qweb-pdf"
-            file="domex.contrasenia_pago_capex"
-            name="domex.contrasenia_pago_capex"
-        />
         
         <report
             id="report_purchase_order_importacion_almex"

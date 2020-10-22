@@ -66,3 +66,4 @@ class domex_contrapartida_wizard(models.TransientModel):
         move.post()
 
         return {'type': 'ir.actions.act_window_close'}
+    

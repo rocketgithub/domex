@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="domex_wizard_contrasenia" model="ir.ui.view">
+        <field name="name" >domex_contrasenia_pago</field>
+        <field name="model" >domex.wizard_contrasenia</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                    <field name="company_id"></field>
+                </group>
+                <footer>
+                      <button name='action_report' string='Generar'
+                                class='oe_highlight'
+                                type='object'
+                                 />
+                      <span class="or_cancel" > or
+                                <button special="cancel" string="Cancel" type="object" class="oe_link oe_inline"/>
+                     </span>
+               </footer>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="domex_action_wizard_contrasenia" model="ir.actions.act_window">
+        <field name="name">domex_contrasenia_action</field>
+        <field name="res_model">domex.wizard_contrasenia</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="domex_wizard_contrasenia"/>
+        <field name="target">new</field>
+    </record>
+    
+    <act_window id="domex_action_window_wizard_contrasenia"
+            name="Contraseñas de Pago"
+            src_model="account.invoice"
+            res_model="domex.wizard_contrasenia"
+            view_type="form" view_mode="form" target="new" key2="client_print_multi"
+         />
+</odoo>

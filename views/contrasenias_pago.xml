@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="contrasenia_pago_aplytek">
+    <template id="contrasenias_pago">
         <t t-call="report.html_container">
-                 <t t-foreach="docs" t-as="o"> 
-                    <div class="article">
+            <t t-foreach="docs" t-as="o">
+                   <div class="article">
                         <div class="header">
                             
+                            <t t-if="company.name == 'Almex, S.A.'">
+                                <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 837px;"/>
+                            </t>
+                            <t t-elif="company.name == 'Aplytek, S.A.'">
+                                <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 837px;"/>
+                            </t>
                             
-                            
-                            <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 837px;"/>
-                            
+                            <t t-elif="company.name == 'Axir, S.A.'">
+                                <img src='/domex/static/src/img/axir_logo.png' style="max-width: 837px;"/>
+                            </t>
+                            <t t-elif="company.name == 'Capex, S.A.'">
+                                <img src='/domex/static/src/img/capex_logo.png' style="max-width: 837px;"/>
+                            </t>
+                            <t t-elif="company.name == 'Domex, S.A.'">
+                                <img src='/domex/static/src/img/domex_logo_reporte.png' style="max-width: 837px;"/>
+                            </t>
+                            <t t-elif="company.name == 'KINETICS, S.A.'">
+                                <img src='/domex/static/src/img/kinetics_logo.png' style="max-width: 837px;"/>
+                            </t>
+                            <t t-elif="company.name == 'LEJAIM, S.A.'">
+                                <img src='/domex/static/src/img/lejaim_logo.png' style="max-width: 837px;"/>
+                            </t>
+
                             <table class="table table-condensed">
                                 <tr>
                                     <td style="border-left: 2px solid grey;">
-                                        <h3>APLYTEK S.A.</h3>
-                                        7 calle OFIBODEGA 20 3-24 zona 18
+                                        <h3><span t-esc="company.name"/></h3>
+                                        <span t-esc="company.street"/>
                                         <br/>Guatemala, Guatemala
-                                        <br/>PBX 2304-7777
-                                        <br/>NIT 710022-1
+                                        <br/>PBX <span t-esc="company.phone"/>
+                                        <br/>NIT <span t-esc="company.vat"/>
                                     </td>
                                     <td style="border-left: 2px solid grey;">
                                         <br/><br/>
@@ -31,7 +50,7 @@
                                 </tr>
                             </table>
                         </div>
-                        
+
                         <div class="page">
                             <br/><br/><br/><br/>
                             <t t-set="factura" t-value="_get_facturas(o)"/>
@@ -49,11 +68,11 @@
                                     <td style="border-bottom: 1px solid grey;"><span t-esc="user.name"/></td>
                                 </tr>
                             </table>
-   
+
                             <br/>
                             <b>QUEDAN A NUESTRO PODER PARA SU REVISIÓN</b>
                             <br/>
-                            
+
                             <table class="table table-condensed" style="border-collapse: collapse;">
                                 <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
                                     <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">FECHA</th>
@@ -63,7 +82,7 @@
                                     <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">FECHA DE VENCIMIENTO</th>
                                     <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">MONTO</th>
                                     <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">ESTADO</th></b>
-                                    
+
                                 </tr>
                                 <tbody>
                                     <t t-foreach="factura['facturas']" t-as="fac">
@@ -92,7 +111,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+
                             <br/>
                             FECHAS LÍMITE PARA PROCESAMIENTO DE FACTURAS DE PROVEEDORES:
                             <br/><br/>
@@ -111,23 +130,23 @@
                             <b>NOTA:</b>
                             <br/>1. Únicamente se emitirán pagos a facturas con contraseña que cumplan con los puntos arriba mencionados
                             <br/>2. No se entregarán cheque de pago sin contraseña
-                            <br/>3. Aplytek, S.A. no se hace responsable por facturas no entregadas al
+                            <br/>3. <span t-esc="company.name"/> no se hace responsable por facturas no entregadas al
                                     departamento contable en el lugar, correo y fecha autorizado.
                             <br/><br/><br/>
-                            
+
                             <table class="table table-condensed;">
                                 <tr>
                                     <td style="border-top: 1px solid grey;">
-                                        El presente perderá efecto y valor en el momento que Aplytek, S.A. realice el pago mediante cheque o transferencia. El comprobante de depósito o transferencia elemento emitido por el banco será suficiente para dejar sin efecto la presente contraseña de pago y liberar a Aplytek, S.A.  de su responsabilidad por virtud del mismo.
+                                        El presente perderá efecto y valor en el momento que <span t-esc="company.name"/> realice el pago mediante cheque o transferencia. El comprobante de depósito o transferencia elemento emitido por el banco será suficiente para dejar sin efecto la presente contraseña de pago y liberar a <span t-esc="company.name"/> de su responsabilidad por virtud del mismo.
                                         <br/>
                                         La presente contraseña de pago podría aplicar retenciones de ley.
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                        
+
                     </div>
-                 </t> 
+            </t>
         </t>
     </template>
 </odoo>
