@@ -29,4 +29,5 @@
             res_model="domex.contrapartida.wizard"
             view_type="form" view_mode="form" target="new"
             />
+    
 </odoo>

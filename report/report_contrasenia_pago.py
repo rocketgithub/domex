@@ -7,10 +7,8 @@ from datetime import date
 import logging
 # import odoo.addons.l10n_gt_extra.a_letras
 
-class ReportContraseniaPagoAplytek(models.AbstractModel):
-    _name = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = ''
+class ReportContraseniasPago(models.AbstractModel):
+    _name = 'report.domex.contrasenias_pago'
 
     def fecha_impresion(self):
         fecha = str(datetime.datetime.strptime(str(date.today()), '%Y-%m-%d').date())
@@ -28,60 +26,24 @@ class ReportContraseniaPagoAplytek(models.AbstractModel):
         factura_dic = factura_dic[primer_proveedor]
         factura_dic['compras'] = (','.join(factura_dic['compras'])) if factura_dic['compras'][0] != False else ''
         return factura_dic
+    
 
     @api.model
     def render_html(self, docids, data=None):
+        data = data if data is not None else {}
         self.model = 'account.invoice'
-        docs = self.env[self.model].browse(docids)
-
+        docs = self.env[self.model].browse(data.get('ids', data.get('active_ids')))
+        company_id = self.env['res.company'].search([('id','=', data['form']['company_id'][0])])
         docargs = {
-            'doc_ids': docids,
+            'doc_ids': data.get('ids', data.get('active_ids')),
             'doc_model': self.model,
             'docs': docs,
             'fecha_impresion': self.fecha_impresion,
             '_get_facturas': self._get_facturas,
+            'company': company_id,
+            'data': dict(
+                data
+            ),
         }
-        return self.env['report'].render(self.nombre_reporte, docargs)
-
-
-class ReportContraseniaPagoAplytek(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_aplytek'
-    _inherit = 'domex.abstract.contrasenia_pago'
+        return self.env['report'].render('domex.contrasenias_pago', docargs)
     
-    nombre_reporte = 'domex.contrasenia_pago_aplytek'
-
-class ReportContraseniaPagoLejaim(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_lejaim'
-    _inherit = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = 'domex.contrasenia_pago_lejaim'
-    
-class ReportContraseniaPagoAxir(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_axir'
-    _inherit = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = 'domex.contrasenia_pago_axir'
-
-class ReportContraseniaPagoKinetics(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_kinetics'
-    _inherit = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = 'domex.contrasenia_pago_kinetics'
-    
-class ReportContraseniaPagoDomex(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_domex'
-    _inherit = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = 'domex.contrasenia_pago_domex'
-
-class ReportContraseniaPagoAlmex(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_almex'
-    _inherit = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = 'domex.contrasenia_pago_almex'
-    
-class ReportContraseniaPagoCapex(models.AbstractModel):
-    _name = 'report.domex.contrasenia_pago_capex'
-    _inherit = 'domex.abstract.contrasenia_pago'
-    
-    nombre_reporte = 'domex.contrasenia_pago_capex'

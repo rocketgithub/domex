@@ -26,7 +26,6 @@
                     </table>
                 </div>
                 
-<!--                t-field-options='{"format": "dd/mm/Y"}'-->
                 <t t-call="report.internal_layout">
                     <div class="page"> 
                         <br/><br/><br/><br/>
@@ -69,7 +68,7 @@
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
                             <tr>
-                                <td style="border: 1px solid grey;">ENTREGA: <span t-field="o.move_type"/><br/>FECHA: <br/>HORA: </td>
+                                <td style="border: 1px solid grey;">ENTREGA: <span t-field="o.sale_id.send_docs_to"/><br/>FECHA: <br/>HORA: </td>
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
                         </table> 
