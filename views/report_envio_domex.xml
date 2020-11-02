@@ -73,14 +73,19 @@
                             </tr>
                         </table>
                         
+                        
+                        
+                    </div>
+                    
+                    <div class="footer text-center">
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr>
                                 <td style="border: 1px solid grey;height: 150px">AUTORIZA:</td>
                                 <td style="border: 1px solid grey;vertical-align: middle">FIRMA:</td>
                             </tr>
                         </table> 
-                        
                     </div>
+
                 </t>
             </t>
 </template>

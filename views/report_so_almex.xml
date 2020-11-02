@@ -86,6 +86,11 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
+                        
+                    </div>
+                    
+                    <div class="footer text-center">
                         Notas
                         
                         <table class="table table-condensed" style="border-collapse: collapse;">
@@ -127,7 +132,7 @@
                                 <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
                             </tr>
                             <tr style="height: 60px">
-                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey;font-size: 11px;"> Asesor de Ventas <br/>Contacto@gmail.com</td>
+                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey;font-size: 11px;"> <span t-field="o.user_id.name"/><br/><span t-field="o.user_id.phone"/> <br/><span t-field="o.user_id.email"/></td>
                                 <td style="border: 1px solid grey;"></td>
                             </tr>
                             <tr>
@@ -135,8 +140,9 @@
                                 <td style="font-size: 11px;text-align:center;">(firma y sello)</td>
                             </tr>
                         </table>
-                        
                     </div>
+
+                    
                 </t>
             </t>
 </template>

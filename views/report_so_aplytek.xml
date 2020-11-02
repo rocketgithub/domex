@@ -50,7 +50,7 @@
                         <table class="table table-condensed;">
                             <tr>
                                 <td style="border-top: none; border-left: 1px solid grey">
-                                    Estimado Sr. Gómez 
+                                    Estimado <span t-field="o.atencion.name"/> 
                                     <br/>De acuerdo a <u><span t-esc="o.medidas"/></u> a continuación tenemos el agrado de presentarle nuestra oferta por <u><span t-esc="o.oferta_por"/></u> de los materiales para el proyecto indicado en referencia, la cual comprende:
                                 </td>
                             </tr>
@@ -148,7 +148,7 @@
                                 <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
                             </tr>
                             <tr style="height: 60px">
-                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-esc="user.name"/><br/><span t-esc="user.phone"/> <br/><span t-esc="user.email"/></td>
+                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-field="o.user_id.name"/><br/><span t-field="o.user_id.phone"/> <br/><span t-field="o.user_id.email"/></td>
                                 <td style="border: 1px solid grey;"></td>
                             </tr>
                             <tr>

@@ -62,7 +62,13 @@ Este es el módulo para la empresa Domex
         'wizard/purchase_order.xml',
         'views/contrasenias_pago.xml',
         'views/purchase_orders.xml',
+        'wizard/cuentas_pagar_cobrar.xml',
+        'views/cuentas_pagar_cobrar.xml',
     ],
+    
+    
+    
+    
     'demo': [],
     'installable': True
 }

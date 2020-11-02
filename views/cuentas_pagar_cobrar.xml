@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cuentas_pagar_cobrar">
+        <t t-call="report.html_container">
+        <t t-set="data_report_margin_top" t-value="12"/>
+        <t t-set="data_report_header_spacing" t-value="9"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+        <t t-foreach="docs" t-as="o">
+            <div class="article">
+                <div class="header">
+                    
+                    <t t-if="data['form']['compania_id'] == 'Almex, S.A.'">
+                        <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 1090px;"/>
+                    </t>
+                    <t t-elif="data['form']['compania_id'] == 'Aplytek, S.A.'">
+                        <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 1090px;"/>
+                    </t>
+                    <t t-elif="data['form']['compania_id'] == 'Axir, S.A.'">
+                        <img src='/domex/static/src/img/axir_logo.png' style="max-width: 1090px;"/>
+                    </t>
+                    <t t-elif="data['form']['compania_id'] == 'Capex, S.A.'">
+                        <img src='/domex/static/src/img/capex_logo.png' style="max-width: 1090px;"/>
+                    </t>
+                    <t t-elif="data['form']['compania_id'] == 'Domex, S.A.'">
+                        <img src='/domex/static/src/img/domex_logo_reporte.png' style="max-width: 1090px;"/>
+                    </t>
+                    <t t-elif="data['form']['compania_id'] == 'KINETICS, S.A.'">
+                        <img src='/domex/static/src/img/kinetics_logo.png' style="max-width: 1090px;"/>
+                    </t>
+                    <t t-elif="data['form']['compania_id'] == 'LEJAIM, S.A.'">
+                        <img src='/domex/static/src/img/lejaim_logo.png' style="max-width: 1090px;"/>
+                    </t>
+                </div>
+
+                <div class="page">
+                    <t t-set="total" t-value="0"/>
+                    <br/><br/>
+                    <table class="table table-condensed">
+                        <tr style="border_top: 2px solid white">
+                            <td style="border-left: 2px solid grey;border_top: 2px solid white">
+                                <div>
+                                    <t t-if="data['computed']['tipo'] == 1"><h3>CUENTAS POR PAGAR GENERAL</h3></t>
+                                    <t t-if="data['computed']['tipo'] == 2"><h3>COBRANZA GENERAL</h3></t>
+                                    <t t-if="data['computed']['tipo'] == 3"><h3>COBRANZA GENERAL y CUENTAS POR PAGAR GENERAL</h3></t>
+                                </div>
+                            </td>
+                            <td style="width:75px;text-align: top;"><span t-esc="fecha_impresion()" t-options='{"widget": "date"}'/></td>
+                        </tr>
+                    </table>
+                    
+                    <div style="padding-left:150px">
+                        <t t-if="data['form']['date_from']">FECHA DESDE: <span t-esc="data['form']['date_from']"/></t> 
+                        <t t-if="data['form']['date_to']">FECHA HASTA: <span t-esc="data['form']['date_to']"/></t>
+                        MOVIMIENTOS SEÑALADOS: <t t-if="data['form']['target_move'] == 'all'">Todos los asientos</t><t t-if="data['form']['target_move'] == 'posted'">Todos los asientos asentados</t>
+                    </div>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="border-bottom: 2px solid white;"><h4><strong t-esc="o.name"/></h4></th>
+                                <th colspan="7" style="border-bottom: 2px solid grey;"></th>
+                            </tr>
+                            <tr>
+                                <th style="border-botom: 2px solid grey;">FECHA DE EMISION</th>
+                                <th style="border-botom: 2px solid grey;">ASIENTO CONTABLE</th>
+                                <th style="border-botom: 2px solid grey;">FECHA VENCIMIENTO</th>
+                                <th style="border-botom: 2px solid grey;">FOLIO INTERNO</th>
+                                <th style="border-botom: 2px solid grey;">DESCRIPCIÓN</th>
+                                <th style="border-botom: 2px solid grey;">DEBE</th>
+                                <th style="border-botom: 2px solid grey;">HABER</th>
+                                <th style="border-botom: 2px solid grey;">SALDO PENDIENTE</th>
+                                <th style="border-botom: 2px solid grey;" t-if="data['form']['amount_currency']">MONEDA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="lines(data, o)" t-as="line">
+                                <td>
+                                    <span t-esc="line['date']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['code']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['a_code']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['displayed_name']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['a_name']"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="line['progress']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                                <td class="text-right" t-if="data['form']['amount_currency']">
+                                    <t t-if="line['currency_id']">
+                                      <span t-esc="line['amount_currency']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                </td>
+                                <td class="text-right;" style="background-color: whitesmoke">
+                                    <h4><strong>SUBTOTAL</strong></h4>
+                                </td>
+                                <td colspan="2" class="text-center" style="background-color: whitesmoke">
+                                    <h4><strong t-esc="sum_partner(data, o, 'debit - credit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
+                                    <t t-set="subs" t-value="sum_partner(data, o, 'debit - credit')"/>
+                                    <t t-set="total" t-value="total + subs"/>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    
+                    <table class="table table-condensed">
+                        <tr>
+                            <td style="border: 2px solid white;"></td>
+                            <td style="border-top: 2px solid white;border-bottom: 2px solid white;border-left: 2px solid white; width:120px;"><h4>TOTALES</h4></td>
+                            <td style="border: 2px solid grey;width:180px;"><h4><span t-esc="total"/></h4></td>
+                            <td style="border: 2px solid grey;width:180px;"><h4><span t-esc="total"/></h4></td>
+                        </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </t>
+    </t>
+    </template>
+</odoo>

@@ -88,7 +88,10 @@
                             </tbody>
                         </table>
                         
-                        
+                    </div>
+                    
+                    
+                    <div class="footer text-center">
                         <div style="border: 1px solid grey;">
                              Notas:
 
@@ -125,17 +128,14 @@
                                 </tr>
                             </table> 
                         </div>
-                    </div>
-                    
-                    
-                    <div class="footer text-center">
+                        
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr style="vertical-align: middle;">
                                 <td style="border-top: 1px solid grey; border-left: 1px solid grey;width:430px;"></td>
                                 <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
                             </tr>
                             <tr style="height: 60px">
-                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-esc="user.name"/><br/><span t-esc="user.phone"/> <br/><span t-esc="user.email"/></td>
+                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-field="o.user_id.name"/><br/><span t-field="o.user_id.phone"/> <br/><span t-field="o.user_id.email"/></td>
                                 <td style="border: 1px solid grey;"></td>
                             </tr>
                             <tr>
