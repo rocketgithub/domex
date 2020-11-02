@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="domex_wizard_cuentas_pagar_cobrar" model="ir.ui.view">
+        <field name="name">domex_cuentas_pagar_cobrar</field>
+        <field name="model">domex.wizard_cuentas_cobrar_pagar</field>
+        <field name="inherit_id" ref="account.account_common_report_view"/>
+        <field name="arch" type="xml">
+        <data>
+        <xpath expr="//field[@name='target_move']" position="after">
+                <field name="result_selection"/>
+                <field name="amount_currency" groups="base.group_multi_currency"/>
+                <newline/>
+                <field name="reconciled"/>
+                <newline/>
+                <field name="compania_id"/>
+                <newline/>
+            </xpath>
+        </data>
+        </field>
+    </record>
+
+    <record id="domex_action_wizard_cuentas_pagar_cobrar" model="ir.actions.act_window">
+        <field name="name">Cuentas por Pagar y Cobrar</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">domex.wizard_cuentas_cobrar_pagar</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="domex_wizard_cuentas_pagar_cobrar"/>
+        <field name="target">new</field>
+    </record>
+
+    <record id="domex_action_wizard_cuentas_pagar_cobrar_values" model="ir.values">
+        <field name="model_id" ref="account.model_account_account" />
+        <field name="name">Cuentas por Pagar y Cobrar</field>
+        <field name="key2">client_print_multi</field>
+        <field name="value" eval="'ir.actions.act_window,' +str(ref('domex_action_wizard_cuentas_pagar_cobrar'))" />
+        <field name="key">action</field>
+        <field name="model">account.account</field>
+    </record>
+
+    <menuitem
+        id="domex_menu_cuentas_pagar_cobrar"
+        name="Cuentas por Pagar y Cobrar"
+        parent="account.menu_finance_legal_statement"
+        action="domex_action_wizard_cuentas_pagar_cobrar"
+        groups="account.group_account_manager,account.group_account_user"
+       />
+
+</odoo>

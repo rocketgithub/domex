@@ -80,3 +80,6 @@ class PurchaseOrder(models.Model):
     marks = fields.Text(string="Marks")
     insurance = fields.Char('Insurance')
     delivery = fields.Char('Delivery')
+    proyecto = fields.Char('Proyecto')
+    solicitante = fields.Many2one('res.partner', string='Solicitante')
+    lugar_entrega = fields.Char('Lugar de entrega')

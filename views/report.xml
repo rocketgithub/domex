@@ -290,6 +290,16 @@
             file="domex.contrasenias_pago"
             name="domex.contrasenias_pago"
             menu="False"
+            paperformat="domex.paperformat_contrasenias"
+        />
+        
+        <report 
+            id="report_cuentas_pagar_cobrar"
+            model="report.domex.cuentas_pagar_cobrar"
+            string="Cuentas por Pagar y Cobrar"
+            report_type="qweb-pdf"
+            name="domex.cuentas_pagar_cobrar"
+            file="domex.cuentas_pagar_cobrar"
         />
         
         <report
@@ -337,6 +347,7 @@
             report_type="qweb-pdf"
             file="domex.report_so_almex"
             name="domex.report_so_almex"
+            paperformat="domex.paperformat_aplytek_so"
         />
         
         <report
@@ -346,6 +357,7 @@
             report_type="qweb-pdf"
             file="domex.report_so_domex"
             name="domex.report_so_domex"
+            paperformat="domex.paperformat_aplytek_so"
         />
         
         <report
@@ -365,6 +377,7 @@
             report_type="qweb-pdf"
             file="domex.report_envio_almex"
             name="domex.report_envio_almex"
+            paperformat="domex.paperformat_envio"
         />
         
         <report
@@ -374,6 +387,7 @@
             report_type="qweb-pdf"
             file="domex.report_envio_domex"
             name="domex.report_envio_domex"
+            paperformat="domex.paperformat_envio"
         />
         
         <report

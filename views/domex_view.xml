@@ -110,6 +110,9 @@
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
                 <field name="incoterm_id" position="after">
+                    <field name="proyecto"/>
+                    <field name="solicitante"/>
+                    <field name="lugar_entrega"/>
                     <field name="supplier_order_ref"/>
                     <field name="bill_to"/>
                     <field name="consigned_to"/>

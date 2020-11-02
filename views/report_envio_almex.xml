@@ -57,6 +57,8 @@
                             </tbody>
                         </table>
                         
+                    </div>
+                    <div class="footer text-center">
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr style="vertical-align: middle;">
                                 <td colspan="2" style="border: 1px solid grey;">FECHA:</td>
@@ -66,8 +68,9 @@
                                 <td style="border: 1px solid grey;">FIRMA DE RECIBIDO:<br/><br/><br/><br/>SELLO:<br/><br/><br/></td>
                             </tr>
                         </table> 
-                        
                     </div>
+                    
+                    
                 </t>
             </t>
 </template>

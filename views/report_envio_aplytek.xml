@@ -71,14 +71,16 @@
                                 <td style="border: 1px solid grey;">ENTREGA: <span t-field="o.sale_id.send_docs_to"/><br/>FECHA: <br/>HORA: </td>
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
-                        </table> 
+                        </table>  
                         
+                    </div>
+                    
+                    <div class="footer text-center">
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr>
                                 <td style="border: 1px solid grey; padding-left:550px; height: 75px">FIRMA AUTORIZACIÓN:</td>
                             </tr>
                         </table> 
-                        
                     </div>
                 </t>
             </t>

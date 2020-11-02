@@ -18,7 +18,13 @@ class ReportContraseniasPago(models.AbstractModel):
         factura_dic = {}
         for factura in facturas:
             if factura.partner_id.id not in factura_dic:
-                factura_dic.update({factura.partner_id.id: {'compras': [],'facturas':[],'nombre': factura.partner_id.name, 'total':0}   })
+                if factura.reference:
+                    split = factura.reference.split('-')
+                    serie = split[0]
+                    numero = split[1]
+                    factura_dic.update({factura.partner_id.id: {'compras': [],'facturas':[],'nombre': factura.partner_id.name, 'nit': factura.partner_id.vat, 'serie': serie, 'numero': numero, 'total':0}   })
+                else:
+                    factura_dic.update({factura.partner_id.id: {'compras': [],'facturas':[],'nombre': factura.partner_id.name, 'nit': factura.partner_id.vat,'serie': "", 'numero': "", 'total':0}   })
             factura_dic[factura.partner_id.id]['total'] += factura.amount_total
             factura_dic[factura.partner_id.id]['compras'].append(factura.origin)
             factura_dic[factura.partner_id.id]['facturas'].append(factura)
