@@ -302,6 +302,16 @@
             file="domex.cuentas_pagar_cobrar"
         />
         
+        <report 
+            id="report_libro_mayor_compras"
+            model="report.domex.libro_mayor_compras"
+            string="Libro Mayor de Compras"
+            report_type="qweb-pdf"
+            name="domex.libro_mayor_compras"
+            file="domex.libro_mayor_compras"
+            paperformat="domex.paperformat_libro_mayor"
+        />
+        
         <report
             id="report_purchase_orders"
             string="Ordenes de Compra"

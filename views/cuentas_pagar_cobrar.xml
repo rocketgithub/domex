@@ -39,12 +39,12 @@
                         <tr style="border_top: 2px solid white">
                             <td style="border-left: 2px solid grey;border_top: 2px solid white">
                                 <div>
-                                    <t t-if="data['computed']['tipo'] == 1"><h3>CUENTAS POR PAGAR GENERAL</h3></t>
-                                    <t t-if="data['computed']['tipo'] == 2"><h3>COBRANZA GENERAL</h3></t>
-                                    <t t-if="data['computed']['tipo'] == 3"><h3>COBRANZA GENERAL y CUENTAS POR PAGAR GENERAL</h3></t>
+                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['payable']"><h3>CUENTAS POR PAGAR GENERAL</h3></t>
+                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['receivable']"><h3>COBRANZA GENERAL</h3></t>
+                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['payable', 'receivable']"><h3>COBRANZA GENERAL y CUENTAS POR PAGAR GENERAL</h3></t>
                                 </div>
                             </td>
-                            <td style="width:75px;text-align: top;"><span t-esc="fecha_impresion()" t-options='{"widget": "date"}'/></td>
+                            <td style="width:90px;text-align: top;"><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/></td>
                         </tr>
                     </table>
                     

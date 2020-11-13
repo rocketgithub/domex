@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="libro_mayor_compras">
+        
+        <t t-call="report.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="110"/>
+            <t t-foreach="docs" t-as="o">
+                <div class="article">
+                    <div class="header">
+
+                        <t t-if="data['compania_id'] == 'Almex, S.A.'">
+                            <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 1500px;"/>
+                        </t>
+                        <t t-elif="data['compania_id'] == 'Aplytek, S.A.'">
+                            <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 1500px;"/>
+                        </t>
+                        <t t-elif="data['compania_id'] == 'Axir, S.A.'">
+                            <img src='/domex/static/src/img/axir_logo.png' style="max-width: 1500px;"/>
+                        </t>
+                        <t t-elif="data['compania_id'] == 'Capex, S.A.'">
+                            <img src='/domex/static/src/img/capex_logo.png' style="max-width: 1500px;"/>
+                        </t>
+                        <t t-elif="data['compania_id'] == 'Domex, S.A.'">
+                            <img src='/domex/static/src/img/domex_logo_reporte.png' style="max-width: 1500px;"/>
+                        </t>
+                        <t t-elif="data['compania_id'] == 'KINETICS, S.A.'">
+                            <img src='/domex/static/src/img/kinetics_logo.png' style="max-width: 1500px;"/>
+                        </t>
+                        <t t-elif="data['compania_id'] == 'LEJAIM, S.A.'">
+                            <img src='/domex/static/src/img/lejaim_logo.png' style="max-width: 1500px;"/>
+                        </t>
+                    </div>
+
+                    <div class="page">
+                        <t t-set="total" t-value="0"/>
+                        <br/><br/><br/><br/>
+                        <table class="table table-condensed">
+                            <tr style="border_top: 2px solid white">
+                                <td style="border-left: 2px solid grey;border_top: 2px solid white">
+                                    <div>
+                                        <h3>COMPRAS LOCALES Y EXPORTACIONES</h3>
+                                    </div>
+                                </td>
+                                <td style="width:90px;text-align: top;">
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/> 
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        
+                        <div class="mt-4" style="padding-left:300px">
+                            <h4><t t-if="data['date_from']">FECHA DESDE: <span t-esc="data['date_from']"/></t> 
+                            <t t-if="data['date_to']">FECHA HASTA: <span t-esc="data['date_to']"/></t>
+                            MOVIMIENTOS SEÑALADOS: <t t-if="data['target_move'] == 'all'">Todos los asientos</t><t t-if="data['target_move'] == 'posted'">Todos los asientos asentados</t></h4>
+                        </div>
+                        
+                        
+                        <h3><b>Compras Locales</b></h3>
+                        <t t-set="total_local" t-value="0"/>
+                        <table class="table table-condensed">
+                            <t t-foreach="Accounts" t-as="account">
+                                <thead>
+                                    <tr>
+                                        <th style="border-bottom: 2px solid white;border-left: 2px solid grey;">
+                                            <h4><span t-esc="account['name']"/></h4>
+                                        </th>
+                                        <th colspan="4" style="border-bottom: 2px solid grey;"></th>
+                                        <th class="active"> SUBTOTAL </th>
+                                        <th class="active" style="vertical-align: middle;text-align: center;"> 
+                                            <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
+                                            <t t-set="total_local" t-value="total_local + account['balance']"/>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border: 2px solid white;width: 100px;">FECHA FACTURA</th>
+                                        <th style="border: 2px solid white;">PROVEEDOR</th>
+                                        <th style="border: 2px solid white;width: 400px;">DESCRIPCIÓN</th>
+                                        <th style="border: 2px solid white;">FECHA VENCIMIENTO</th>
+                                        <th style="border: 2px solid white;text-align: right;">DEBE</th>
+                                        <th style="border: 2px solid white;text-align: right;">HABER</th>
+                                        <th style="border: 2px solid white;text-align: right;">SALDO PENDIENTE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="account['move_lines']" t-as="line">
+                                        <t t-if="line['compra'] == 'local'">
+                                            <td>
+                                                <span t-esc="line['ldate']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['partner_name']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['move_name']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['date_due']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </tbody>
+                                <br/>
+                            </t>
+                        </table>
+                        
+                        <div style="padding-left:1000px">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td class="active" style="border: 2px solid white;"><h4><b>SUBTOTAL COMPRAS LOCALES</b></h4></td>
+                                    <td class="active" style="border: 2px solid white;"><b><h4><span t-esc="total_local"/></h4></b></td>
+                                </tr>
+                            </table>
+                        </div>
+                         
+                        
+                        
+                        
+                        
+                        <h3><b>Compras Exterior</b></h3>
+                        <t t-set="total_exterior" t-value="0"/>
+                        <table class="table table-condensed">
+                            <t t-foreach="Accounts" t-as="account">
+                                <thead>
+                                    <tr>
+                                        <th style="border-bottom: 2px solid white;border-left: 2px solid grey;">
+                                            <h4><span t-esc="account['name']"/></h4>
+                                        </th>
+                                        <th colspan="4" style="border-bottom: 2px solid grey;"></th>
+                                        <th class="active"> SUBTOTAL </th>
+                                        <th class="active" style="vertical-align: middle;text-align: center;"> 
+                                            <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
+                                            <t t-set="total_exterior" t-value="total_exterior + account['balance']"/>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border: 2px solid white;width: 100px;">FECHA FACTURA</th>
+                                        <th style="border: 2px solid white;">PROVEEDOR</th>
+                                        <th style="border: 2px solid white;width: 400px;">DESCRIPCIÓN</th>
+                                        <th style="border: 2px solid white;">FECHA VENCIMIENTO</th>
+                                        <th style="border: 2px solid white;text-align: right;">DEBE</th>
+                                        <th style="border: 2px solid white;text-align: right;">HABER</th>
+                                        <th style="border: 2px solid white;text-align: right;">SALDO PENDIENTE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="account['move_lines']" t-as="line">
+                                        <t t-if="line['compra'] == 'exterior'">
+                                            <td>
+                                                <span t-esc="line['ldate']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['partner_name']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['move_name']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['date_due']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </tbody>
+                                <br/>
+                            </t>
+                        </table>
+                        
+                        <div style="padding-left:1000px">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td class="active" style="border: 2px solid white;"><h4><b>SUBTOTAL COMPRAS EXTERIOR</b></h4></td>
+                                    <td class="active" style="border: 2px solid white;"><b><h4><span t-esc="total_exterior"/></h4></b></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                        
+                        
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="border: 2px solid white;"></td>
+                                <td style="border-top: 2px solid white;border-bottom: 2px solid white;border-left: 2px solid white; width:120px;"><h3><b>TOTALES</b></h3></td>
+                                <td style="border: 2px solid grey;width:180px;vertical-align: middle;text-align: center;">
+                                    <h4><span t-esc="total_local"/></h4>
+                                </td>
+                                <td style="border: 2px solid grey;width:180px;vertical-align: middle;text-align: center;">
+                                    <h4><span t-esc="total_exterior"/></h4>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
