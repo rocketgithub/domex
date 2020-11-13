@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="domex_wizard_libro_mayor_compras" model="ir.ui.view">
+        <field name="name">domex_libro_mayor_compras</field>
+        <field name="model">domex.wizard_libro_mayor_compras</field>
+        <field name="inherit_id" ref="account.account_common_report_view"/>
+        <field name="arch" type="xml">
+        <data>
+        <xpath expr="//field[@name='target_move']" position="after">
+                <field name="display_account" widget="radio"/>
+                <newline/>
+                <field name="compania_id"/>
+                <newline/>
+            </xpath>
+        </data>
+        </field>
+    </record>
+
+    <record id="domex_action_wizard_libro_mayor_compras" model="ir.actions.act_window">
+        <field name="name">Libro Mayor de Compras</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">domex.wizard_libro_mayor_compras</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="domex_wizard_libro_mayor_compras"/>
+        <field name="target">new</field>
+    </record>
+
+    <record id="domex_action_wizard_libro_mayor_compras_values" model="ir.values">
+        <field name="model_id" ref="account.model_account_account" />
+        <field name="name">Libro Mayor de Compras</field>
+        <field name="key2">client_print_multi</field>
+        <field name="value" eval="'ir.actions.act_window,' +str(ref('domex_action_wizard_libro_mayor_compras'))" />
+        <field name="key">action</field>
+        <field name="model">account.account</field>
+    </record>
+
+    <menuitem
+        id="domex_menu_libro_mayor_compras"
+        name="Libro Mayor de Compras"
+        parent="account.menu_finance_legal_statement"
+        action="domex_action_wizard_libro_mayor_compras"
+        groups="account.group_account_manager,account.group_account_user"
+       />
+
+</odoo>

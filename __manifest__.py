@@ -64,6 +64,8 @@ Este es el módulo para la empresa Domex
         'views/purchase_orders.xml',
         'wizard/cuentas_pagar_cobrar.xml',
         'views/cuentas_pagar_cobrar.xml',
+        'wizard/libro_mayor_compras.xml',
+        'views/libro_mayor_compras.xml',
     ],
     
     

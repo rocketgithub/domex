@@ -101,9 +101,9 @@
                                         </td>
                                         <td style="border-bottom: 1px solid grey;text-align: center;"><span t-esc="l.product_qty"/></td>
                                         <td style="border-bottom: 1px solid grey;"><span t-esc="l.product_uom.name"/></td>
-                                        <td style="text-align: right;border-bottom: 1px solid grey;"><span t-esc="l.price_unit"  t-options='{"widget":"float","precision":2}'/></td>
+                                        <td style="text-align: right;border-bottom: 1px solid grey;"><span t-esc="l.price_unit"  t-options='{"widget":"float","precision":5}'/></td>
                                         <td style="border-bottom: 1px solid grey;text-align: center;"><span t-esc="l.currency_id.name"/></td>
-                                        <td style="text-align: right;border-bottom: 1px solid grey;"><span t-esc="l.price_total"  t-options='{"widget":"float","precision":2}'/></td>
+                                        <td style="text-align: right;border-bottom: 1px solid grey;"><span t-esc="l.price_total"  t-options='{"widget":"float","precision":5}'/></td>
                                     </tr>
                                 </t>
                                 <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:37px;">

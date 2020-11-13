@@ -9,13 +9,9 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 import logging
 # import odoo.addons.l10n_gt_extra.a_letras
 
-class ReportCuentasPagarCobrar(models.AbstractModel):
+class ReportPartnerLedger(models.AbstractModel):
     _inherit = "report.account.report_partnerledger"
     _name = 'report.domex.cuentas_pagar_cobrar'
-    
-    def fecha_impresion(self):
-        fecha = str(datetime.datetime.strptime(str(date.today()), '%Y-%m-%d').date())
-        return fecha
    
     @api.model
     def render_html(self, docids, data=None):
@@ -32,14 +28,10 @@ class ReportCuentasPagarCobrar(models.AbstractModel):
         result_selection = data['form'].get('result_selection', 'customer')
         if result_selection == 'supplier':
             data['computed']['ACCOUNT_TYPE'] = ['payable']
-            data['computed']['tipo'] = 1
         elif result_selection == 'customer':
             data['computed']['ACCOUNT_TYPE'] = ['receivable']
-            data['computed']['tipo'] = 2
         else:
-            data['computed']['ACCOUNT_TYPE'] = ['payable', 'receivable']
-            data['computed']['tipo'] = 3
-            
+            data['computed']['ACCOUNT_TYPE'] = ['payable', 'receivable']     
 
         self.env.cr.execute("""
             SELECT a.id
@@ -71,7 +63,6 @@ class ReportCuentasPagarCobrar(models.AbstractModel):
             'time': time,
             'lines': self._lines,
             'sum_partner': self._sum_partner,
-            'fecha_impresion': self.fecha_impresion,
         }
         return self.env['report'].render('domex.cuentas_pagar_cobrar', docargs)
     
