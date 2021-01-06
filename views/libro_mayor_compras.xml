@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="libro_mayor_compras">
-        
         <t t-call="report.html_container">
             <t t-set="data_report_margin_top" t-value="12"/>
             <t t-set="data_report_header_spacing" t-value="9"/>
@@ -64,9 +63,12 @@
                                 <thead>
                                     <tr>
                                         <th style="border-bottom: 2px solid white;border-left: 2px solid grey;">
-                                            <h4><span t-esc="account['name']"/></h4>
+                                            <h4><span t-esc="account['code']"/></h4>
                                         </th>
-                                        <th colspan="4" style="border-bottom: 2px solid grey;"></th>
+                                        <th style="border-bottom: 2px solid white;"> 
+                                            <h4><span t-esc="account['name']"/></h4> 
+                                        </th>
+                                        <th colspan="3" style="border-bottom: 2px solid grey;"></th>
                                         <th class="active"> SUBTOTAL </th>
                                         <th class="active" style="vertical-align: middle;text-align: center;"> 
                                             <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
@@ -134,9 +136,12 @@
                                 <thead>
                                     <tr>
                                         <th style="border-bottom: 2px solid white;border-left: 2px solid grey;">
+                                            <h4><span t-esc="account['code']"/></h4>
+                                        </th>
+                                        <th style="border-bottom: 2px solid white;">
                                             <h4><span t-esc="account['name']"/></h4>
                                         </th>
-                                        <th colspan="4" style="border-bottom: 2px solid grey;"></th>
+                                        <th colspan="3" style="border-bottom: 2px solid grey;"></th>
                                         <th class="active"> SUBTOTAL </th>
                                         <th class="active" style="vertical-align: middle;text-align: center;"> 
                                             <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>

@@ -7,7 +7,7 @@ class WizardLibroMayorCompras(models.TransientModel):
     _inherit = "account.common.account.report"
     _name = "domex.wizard_libro_mayor_compras"
 
-    journal_ids = fields.Many2many('account.journal', 'account_libro_mayor_rel', 'account_id', 'journal_id', string='Journals', required=True)
+    journal_ids = fields.Many2many("account.account", string="Cuenta", required=True, default=False)
     compania_id = fields.Many2one('res.company', string='Compañía', required=True)
 
     def _print_report(self, data):

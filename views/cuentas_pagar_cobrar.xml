@@ -5,10 +5,8 @@
         <t t-set="data_report_margin_top" t-value="12"/>
         <t t-set="data_report_header_spacing" t-value="9"/>
         <t t-set="data_report_dpi" t-value="110"/>
-        <t t-foreach="docs" t-as="o">
             <div class="article">
                 <div class="header">
-                    
                     <t t-if="data['form']['compania_id'] == 'Almex, S.A.'">
                         <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 1090px;"/>
                     </t>
@@ -30,10 +28,6 @@
                     <t t-elif="data['form']['compania_id'] == 'LEJAIM, S.A.'">
                         <img src='/domex/static/src/img/lejaim_logo.png' style="max-width: 1090px;"/>
                     </t>
-                </div>
-
-                <div class="page">
-                    <t t-set="total" t-value="0"/>
                     <br/><br/>
                     <table class="table table-condensed">
                         <tr style="border_top: 2px solid white">
@@ -47,13 +41,17 @@
                             <td style="width:90px;text-align: top;"><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/></td>
                         </tr>
                     </table>
-                    
                     <div style="padding-left:150px">
                         <t t-if="data['form']['date_from']">FECHA DESDE: <span t-esc="data['form']['date_from']"/></t> 
                         <t t-if="data['form']['date_to']">FECHA HASTA: <span t-esc="data['form']['date_to']"/></t>
                         MOVIMIENTOS SEÑALADOS: <t t-if="data['form']['target_move'] == 'all'">Todos los asientos</t><t t-if="data['form']['target_move'] == 'posted'">Todos los asientos asentados</t>
                     </div>
+                </div>
 
+            <div class="page">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="total" t-value="0"/>
+                    <br/><br/>
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -116,10 +114,9 @@
                                     <t t-set="total" t-value="total + subs"/>
                                 </td>
                             </tr>
-                            
                         </tbody>
                     </table>
-                    
+
                     <table class="table table-condensed">
                         <tr>
                             <td style="border: 2px solid white;"></td>
@@ -128,10 +125,10 @@
                             <td style="border: 2px solid grey;width:180px;"><h4><span t-esc="total"/></h4></td>
                         </tr>
                     </table>
-                    
-                </div>
+                </t>
             </div>
-        </t>
+        </div>
+
     </t>
     </template>
 </odoo>
