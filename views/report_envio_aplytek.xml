@@ -47,19 +47,17 @@
                             </tr>
                             <tbody>
                                 <t t-set="numero" t-value="1"/>
-                                <t t-foreach="o.pack_operation_product_ids" t-as="l">
+                                <t t-foreach="o.move_lines" t-as="l">
                                     <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
                                         <td style="border-left: 1px solid grey;"><span t-esc="numero"/></td>
-                                        <td style="text-align: center;"><span t-esc="l.qty_done"/></td>
-                                        <t t-if="o.sale_id">
-                                            <t t-foreach="o.sale_id.order_line" t-as="line">
-                                                <t t-if="line.product_id.id == l.product_id.id">
-                                                    <td style="text-align: center;">
-                                                        <span t-esc="line.largo"/>
-                                                    </td>
+                                        <td style="text-align: center;"><span t-esc="l.product_uom_qty"/></td>
+                                        <td style="text-align: center;">
+                                            <t t-if="l.quant_ids">
+                                                <t t-if="l.quant_ids[0].lot_id">
+                                                    <span t-esc="l.quant_ids[0].lot_id.largo"/>
                                                 </t>
                                             </t>
-                                        </t>
+                                        </td>
                                         <td style="border-right: 1px solid grey;text-align: center;"><span t-esc="l.product_id.name"/></td>
                                     </tr>
                                     <t t-set="numero" t-value="numero + 1"/>
@@ -76,7 +74,7 @@
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
                             <tr>
-                                <td style="border: 1px solid grey;">ENTREGA: <span t-field="o.create_uid.name"/><br/>FECHA: <span t-field="o.date_done" t-options="{'widget': 'date', 'format': 'dd/MM/yyyy'}"/> <br/>HORA: <span t-field="o.date_done"  t-options="{'format': 'HH:mm:ss '}"/> </td>
+                                <td style="border: 1px solid grey;">ENTREGA: <span t-field="o.encargado_entrega.name"/><br/>FECHA: <span t-field="o.date_done" t-options="{'widget': 'date', 'format': 'dd/MM/yyyy'}"/> <br/>HORA: <span t-field="o.date_done"  t-options="{'format': 'HH:mm:ss '}"/> </td>
                                 <td style="border: 1px solid grey;">FIRMA:</td>
                             </tr>
                         </table>  
