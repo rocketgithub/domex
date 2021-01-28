@@ -309,7 +309,6 @@
             report_type="qweb-pdf"
             name="domex.libro_mayor_compras"
             file="domex.libro_mayor_compras"
-            paperformat="domex.paperformat_libro_mayor"
         />
         
         <report

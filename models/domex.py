@@ -83,3 +83,10 @@ class PurchaseOrder(models.Model):
     proyecto = fields.Char('Proyecto')
     solicitante = fields.Many2one('res.partner', string='Solicitante')
     lugar_entrega = fields.Char('Lugar de entrega')
+
+    
+class StockPicking(models.Model):
+    _inherit = "stock.picking"
+
+    encargado_entrega = fields.Many2one('res.users', string='Encargado de la entrega')
+
