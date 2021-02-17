@@ -36,6 +36,7 @@ class LibroMayorCompras(models.AbstractModel):
             res['code'] = account.code
             res['name'] = account.name
             res['move_lines'] = move_lines[account.id]
+            res['currency_id'] = account.currency_id
             if account.currency_id and account.currency_id.name != 'QTQ':
                 res['compra'] = 'exterior'
             else:

@@ -4,8 +4,7 @@
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="o">
                    <div class="article">
-                        <div class="header">
-                            
+                        <div class="page">
                             <t t-if="company.name == 'Almex, S.A.'">
                                 <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 837px;"/>
                             </t>
@@ -49,10 +48,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </div>
-
-                        <div class="page">
-                            <br/><br/><br/><br/><br/><br/><br/><br/>
+                            <br/>
                             <table class="table table-condensed" style="border-collapse: collapse;">
                                 <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
                                     <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">PROVEEDOR</th>

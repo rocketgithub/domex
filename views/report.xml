@@ -319,8 +319,8 @@
             file="domex.purchase_orders"
             name="domex.purchase_orders"
             menu="False"
+            paperformat="domex.paperformat_margin_top_5"
         />
-        
         
         <report
             id="report_purchase_order_importacion_almex"
@@ -386,7 +386,7 @@
             report_type="qweb-pdf"
             file="domex.report_envio_almex"
             name="domex.report_envio_almex"
-            paperformat="domex.paperformat_envio"
+            paperformat="domex.paperformat_margin_top_5"
         />
         
         <report
@@ -396,7 +396,7 @@
             report_type="qweb-pdf"
             file="domex.report_envio_domex"
             name="domex.report_envio_domex"
-            paperformat="domex.paperformat_envio"
+            paperformat="domex.paperformat_margin_top_5"
         />
         
         <report
@@ -406,6 +406,7 @@
             report_type="qweb-pdf"
             file="domex.report_envio_aplytek"
             name="domex.report_envio_aplytek"
+            paperformat="domex.paperformat_margin_top_5"
         />
         
     </data>
