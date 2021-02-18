@@ -3,33 +3,33 @@
 <template id="report_so_document_aplytek">
     <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
             <t t-foreach="docs" t-as="o">
-                
-                <div class="header">
-                    <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 837px;"/> 
-                    
-                    <table class="table table-condensed">
-                        <tr>
-                            <td style="border-left: 2px solid grey;">
-                                <h3>APLYTEK S.A.</h3>
-                                7 calle OFIBODEGA 20 3-24 zona 18
-                                <br/>Guatemala, Guatemala
-                                <br/>PBX 2304-7777
-                                <br/>NIT 710022-1
-                            </td>
-                            <td style="border-left: 2px solid grey;">
-                                <br/>
-                                <h4>PRESUPUESTO
-                                <br/><b><span t-field="o.name"/></b></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                
-                
-                <t t-call="report.internal_layout">
+                <t t-call="report.html_container">
                     <div class="page"> 
-                        <br/><br/><br/><br/>
+                        <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 837px;"/> 
+                    
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="border-left: 2px solid grey;">
+                                    <h3>APLYTEK S.A.</h3>
+                                    7 calle OFIBODEGA 20 3-24 zona 18
+                                    <br/>Guatemala, Guatemala
+                                    <br/>PBX 2304-7777
+                                    <br/>NIT 710022-1
+                                </td>
+                                <td style="border-left: 2px solid grey;">
+                                    <br/>
+                                    <h4>PRESUPUESTO
+                                    <br/><b><span t-field="o.name"/></b></h4>
+                                </td>
+                            </tr>
+                        </table>
                         <table  class="table table-condensed" style="border-style: none;">
+                            <tr>
+                                <td style="border-top: none;">FECHA:</td>
+                                <td colspan="5" style="border-top: none">
+                                    <span t-field="o.confirmation_date"/>
+                                </td>
+                            </tr>
                             <tr style="vertical-align: bottom;">
                                 <td style="width:100px;border-top: none;">ATENCIÓN A:</td>
                                 <td colspan="2" style="width:150px; border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion.name"/></td>
@@ -45,8 +45,6 @@
                                 <td style="border-bottom: 1px solid grey; width:230px"><span t-field="o.atencion.email"/></td>
                             </tr>
                         </table>
-                        <br/>
-                        
                         <table class="table table-condensed;">
                             <tr>
                                 <td style="border-top: none; border-left: 1px solid grey">
@@ -93,71 +91,67 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
-                    </div>
-                    
-                    <div class="footer text-center">
-                        Notas
-                        
-                        <table class="table table-condensed" style="border-collapse: collapse;">
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none; width:30px;"></td>
-                                <td style="text-align:center;border-top: none;">1. Validez de la oferta:</td>
-                                <td style="padding-left:5px;border-top: none;"><span t-field="o.validity_date"/></td>
-                                <td style="text-align:center;border-top: none;">5. Precios no incluyen:</td>
-                                <td style="padding-left:5px; border-top: none;"></td>
-                                <td style="border-top: none;width:30px;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:center;border-top: none;">2. Forma de pago:</td>
-                                <td style="padding-left:5px;border-top: none;"><span t-field="o.payment_term_id"/></td>
-                                <td style="text-align:center;border-top: none;font-size: 10px;"><span t-field="o.no_incluyen"/></td>
-                                <td style="padding-left:5px;border-top: none;"></td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:center;border-top: none;">3. Condiciones:</td>
-                                <td style="padding-left:5px;border-top: none;"><span t-field="o.note"/></td>
-                                <td style="text-align:center;border-top: none;">6. Tiempo de entrega:</td>
-                                <td style="padding-left:5px;border-top: none;"><span t-field="o.delivery"/></td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: none;"></td>
-                                <td style="text-align:center;border-top: none;">4. Precios incluyen:</td>
-                                <td style="padding-left:5px;border-top: none;"><span t-field="o.incluyen"/></td>
-                                <td style="text-align:center;border-top: none;">7. Tiempo de instalación:</td>
-                                <td style="padding-left:5px;border-top: none; "><span t-field="o.tiempo_instalacion"/></td>
-                                <td style="border-top: none;"></td>
-                            </tr>
-                        </table> 
                         <br/>
-                        <div style="font-size: 12px; left:50%; text-align: center;">
-                            Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
-                            <br/><br/>
-                            Atentamente,
-                            <br/>APLYTEK, S.A
+                        <div style="border: 1px solid grey;">
+                            Notas
+                            <table class="table table-condensed" style="border-collapse: collapse;">
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none; width:40px;"></td>
+                                    <td style="text-align:left;border-top: none;">1. Validez de la oferta:</td>
+                                    <td style="border-top: none;"><span t-field="o.validity_date"/></td>
+                                    <td style="text-align:left;border-top: none;">5. Precios no incluyen:</td>
+                                    <td style="border-top: none;"></td>
+                                    <td style="border-top: none;width:30px;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">2. Forma de pago:</td>
+                                    <td style="border-top: none;"><span t-field="o.payment_term_id"/></td>
+                                    <td style="text-align:left;border-top: none;font-size: 11px;"><span t-field="o.no_incluyen"/></td>
+                                    <td style="border-top: none;"></td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">3. Condiciones:</td>
+                                    <td style="border-top: none;"><span t-field="o.note"/></td>
+                                    <td style="text-align:left;border-top: none;">6. Tiempo de entrega:</td>
+                                    <td style="border-top: none;"><span t-field="o.delivery"/></td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: none;"></td>
+                                    <td style="text-align:left;border-top: none;">4. Precios incluyen:</td>
+                                    <td style="border-top: none;"><span t-field="o.incluyen"/></td>
+                                    <td style="text-align:left;border-top: none;">7. Tiempo de instalación:</td>
+                                    <td style="border-top: none; "><span t-field="o.tiempo_instalacion"/></td>
+                                    <td style="border-top: none;"></td>
+                                </tr>
+                            </table> 
+                            <br/>
+                            <div style="font-size: 12px; left:50%; text-align: center;">
+                                Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
+                                <br/><br/>
+                                Atentamente,
+                                <br/>APLYTEK, S.A
+                            </div>
+                            <br/>
+                            <table class="table table-condensed" style="border-collapse: collapse;">
+                                <tr style="vertical-align: middle;">
+                                    <td style="border-top: 1px solid grey; border-left: 1px solid grey;width:430px;"></td>
+                                    <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
+                                </tr>
+                                <tr style="height: 60px">
+                                    <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-field="o.user_id.name"/><br/><span t-field="o.user_id.phone"/> <br/><span t-field="o.user_id.email"/></td>
+                                    <td style="border: 1px solid grey;"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="font-size: 11px;text-align:center;">(firma y sello)</td>
+                                </tr>
+                            </table>
                         </div>
-                        
-                        <br/><br/>
-                        <table class="table table-condensed" style="border-collapse: collapse;">
-                            <tr style="vertical-align: middle;">
-                                <td style="border-top: 1px solid grey; border-left: 1px solid grey;width:430px;"></td>
-                                <td style="text-align:center;border: 1px solid grey;">Aceptado Cliente</td>
-                            </tr>
-                            <tr style="height: 60px">
-                                <td style="vertical-align: middle;border-top: none;text-align:center;border-left: 1px solid grey;border-bottom: 1px solid grey; font-size: 11px;"> <span t-field="o.user_id.name"/><br/><span t-field="o.user_id.phone"/> <br/><span t-field="o.user_id.email"/></td>
-                                <td style="border: 1px solid grey;"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td style="font-size: 11px;text-align:center;">(firma y sello)</td>
-                            </tr>
-                        </table>
-                    </div>
-                        
+                    </div>  
                 </t>
             </t>
 </template>
