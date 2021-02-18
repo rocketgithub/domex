@@ -4,32 +4,28 @@
     <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
             <t t-foreach="docs" t-as="o">
                 
-                <div class="header">
-                    <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 837px;"/> 
+                <t t-call="report.html_container">
+                    <div class="page">
+                        <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 837px;"/> 
                     
-                    <table class="table table-condensed">
-                        <tr>
-                            <td style="border-left: 2px solid grey;">
-                                <h3>ALMEX S.A.</h3>
-                                7 calle OFIBODEGA 20 3-24 zona 18
-                                <br/>Guatemala, Guatemala
-                                <br/>PBX 2304-7750
-                                <br/>NIT 1188846-6
-                            </td>
-                            <td style="border-left: 2px solid grey;">
-                                <br/>
-                                <h4>ENVIO: <span t-esc="o.name"/>
-                                <br/>ORDEN DE COMPRA: <span t-esc="o.purchase_id.name"/>
-                                <br/>LOTE: <span t-esc="o.origin"/> </h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                
-                
-                <t t-call="report.internal_layout">
-                    <div class="page"> 
-                        <br/><br/><br/><br/><br/>
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="border-left: 2px solid grey;">
+                                    <h3>ALMEX S.A.</h3>
+                                    7 calle OFIBODEGA 20 3-24 zona 18
+                                    <br/>Guatemala, Guatemala
+                                    <br/>PBX 2304-7750
+                                    <br/>NIT 1188846-6
+                                </td>
+                                <td style="border-left: 2px solid grey;">
+                                    <br/>
+                                    <h4>ENVIO: <span t-esc="o.name"/>
+                                    <br/>ORDEN DE COMPRA: <span t-esc="o.purchase_id.name"/>
+                                    <br/>LOTE: <span t-esc="o.origin"/> </h4>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
                         <div>
                             <b>FECHA:</b> <span t-field="o.min_date" t-field-options='{"format": "d/m/Y"}'/>
                             <br/><b>PARA:</b> <span t-esc="o.partner_id.name"/>
@@ -56,9 +52,7 @@
                                 </t>
                             </tbody>
                         </table>
-                        
-                    </div>
-                    <div class="footer text-center">
+                        <br/><br/>
                         <table class="table table-condensed" style="border-collapse: collapse;">
                             <tr style="vertical-align: middle;">
                                 <td colspan="2" style="border: 1px solid grey;">FECHA:</td>
@@ -69,8 +63,6 @@
                             </tr>
                         </table> 
                     </div>
-                    
-                    
                 </t>
             </t>
 </template>

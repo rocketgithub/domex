@@ -78,7 +78,7 @@
                                             <th colspan="3" style="border-bottom: 2px solid grey;"></th>
                                             <th class="active"> SUBTOTAL </th>
                                             <th class="active" style="vertical-align: middle;text-align: center;"> 
-                                                <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
+                                                <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': account['currency_id']}"/></h4>
                                                 <t t-set="total_local" t-value="total_local + account['balance']"/>
                                             </th>
                                         </tr>
@@ -98,13 +98,13 @@
                                                 <span t-esc="line['date_due']"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -117,7 +117,7 @@
                             <table class="table table-condensed">
                                 <tr>
                                     <td class="active" style="border: 2px solid white;"><h4><b>SUBTOTAL COMPRAS LOCALES</b></h4></td>
-                                    <td class="active" style="border: 2px solid white;"><b><h4><span t-esc="total_local"/></h4></b></td>
+                                    <td class="active" style="border: 2px solid white;"><b><h4><span t-esc="total_local" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4></b></td>
                                 </tr>
                             </table>
                         </div>
@@ -136,8 +136,11 @@
                                     <th style="border: 2px solid white;text-align: right;">SALDO PENDIENTE</th>
                                 </tr>
                             </thead>
+                            <t t-set="account_number" t-value="-1"/>
                             <t t-foreach="Accounts" t-as="account">
+                                <t t-set="account_number" t-value="account_number + 1"/>
                                 <t t-if="account['compra'] == 'exterior'">
+                                    <t t-set="account_exterior_currency" t-value="account_number"/>
                                     <thead>
                                         <tr>
                                             <th style="border-bottom: 2px solid white;border-left: 2px solid grey;">
@@ -149,7 +152,7 @@
                                             <th colspan="3" style="border-bottom: 2px solid grey;"></th>
                                             <th class="active"> SUBTOTAL </th>
                                             <th class="active" style="vertical-align: middle;text-align: center;"> 
-                                                <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
+                                                <h4><span t-esc="account['balance']" t-options="{'widget': 'monetary', 'display_currency': account['currency_id']}"/></h4>
                                                 <t t-set="total_exterior" t-value="total_exterior + account['balance']"/>
                                             </th>
                                         </tr>
@@ -169,13 +172,13 @@
                                                 <span t-esc="line['date_due']"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -188,7 +191,7 @@
                             <table class="table table-condensed">
                                 <tr>
                                     <td class="active" style="border: 2px solid white;"><h4><b>SUBTOTAL COMPRAS EXTERIOR</b></h4></td>
-                                    <td class="active" style="border: 2px solid white;"><b><h4><span t-esc="total_exterior"/></h4></b></td>
+                                    <td class="active" style="border: 2px solid white;"><b><h4><span t-esc="total_exterior" t-options="{'widget': 'monetary', 'display_currency': Accounts[account_number]['currency_id']}"/></h4></b></td>
                                 </tr>
                             </table>
                         </div>
@@ -198,10 +201,10 @@
                                 <td style="border: 2px solid white;"></td>
                                 <td style="border-top: 2px solid white;border-bottom: 2px solid white;border-left: 2px solid white; width:120px;"><h3><b>TOTALES</b></h3></td>
                                 <td style="border: 2px solid grey;width:180px;vertical-align: middle;text-align: center;">
-                                    <h4><span t-esc="total_local"/></h4>
+                                    <h4><span t-esc="total_local" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
                                 </td>
                                 <td style="border: 2px solid grey;width:180px;vertical-align: middle;text-align: center;">
-                                    <h4><span t-esc="total_exterior"/></h4>
+                                    <h4><span t-esc="total_exterior" t-options="{'widget': 'monetary', 'display_currency': Accounts[account_number]['currency_id']}"/></h4>
                                 </td>
                             </tr>
                         </table>
