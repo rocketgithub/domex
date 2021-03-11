@@ -409,5 +409,15 @@
             paperformat="domex.paperformat_margin_top_5"
         />
         
+        <report
+            id="report_orden_trabajo_domex"
+            string="Orden de Trabajo"
+            model="orden.trabajo"
+            report_type="qweb-pdf"
+            file="domex.report_orden_trabajo"
+            name="domex.report_orden_trabajo"
+            paperformat="domex.paperformat_margin_top_5"
+        />
+        
     </data>
 </openerp>

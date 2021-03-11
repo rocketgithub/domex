@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_orden_de_trabajo">
+    <t t-set="doc" t-value="doc.with_context({'lang':doc.sale_id.partner_id.lang})" />
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report.html_container">
+                    <div class="page"> 
+                        <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 837px;"/> 
+                    
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="border-left: 2px solid grey;">
+                                    <h3>APLYTEK S.A.</h3>
+                                    7 calle OFIBODEGA 20 3-24 zona 18
+                                    <br/>Guatemala, Guatemala
+                                    <br/>PBX 2304-7777
+                                    <br/>NIT 710022-1
+                                </td>
+                                <td style="border-left: 2px solid grey;">
+                                    <br/>
+                                    <h4>ORDEN DE PRODUCCIÓN
+                                    <br/><b><span t-field="o.name"/></b></h4>
+                                </td>
+                            </tr>
+                        </table>
+                        <table  class="table table-condensed" style="border-style: none;">
+                            <tr style="vertical-align: bottom;">
+                                <td style="width:150px;border-top: none;"> PROYECTO:</td>
+                                <td style="border-bottom: 1px solid grey;border-top: none;"><span t-field="o.sale_id.proyecto"/></td>
+                            </tr>
+                            <tr style="vertical-align: bottom;">
+                                <td style="width:150px;border-top: none;"> CLIENTE:</td>
+                                <td style="border-bottom: 1px solid grey"><span t-field="o.sale_id.partner_id.name"/></td>
+                            </tr>
+                            <tr style="vertical-align: bottom;">
+                                <td style="width:150px;border-top: none;">FECHA INGRESO:</td>
+                                <td style="border-bottom: 1px solid grey;"><span t-field="o.fecha"/></td>
+                            </tr>
+                            <tr style="vertical-align: bottom;">
+                                <td style="width:170px;border-top: none;">FECHA PRODUCCIÓN:</td>
+                                <td style="border-bottom: 1px solid grey;"><span t-field="o.fecha_produccion"/></td>
+                            </tr>
+                        </table>
+                        
+                        <table class="table table-condensed" style="border-collapse: collapse;">
+                            <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
+                                <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">PANEL #</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">LARGO TOTAL DE PANEL</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CORTE #1</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CORTE #2</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CORTE #3</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CORTE #4</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CORTE #5</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CORTE #6</th>
+                                <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">TOTAL</th>
+                                <th class="text-right" style="border: 1px solid grey;vertical-align: middle;text-align: center;">SOBRA</th></b>
+                            </tr>
+                            <tbody>
+                                <t t-set="panel" t-value="0"/>
+                                <t t-set="largo_total" t-value="0"/>
+                                <t t-set="total" t-value="0"/>
+                                <t t-set="sobra" t-value="0"/>
+                                <t t-foreach="o.corte_ids" t-as="l">
+                                    <t t-set="panel" t-value="panel + 1"/>
+                                    <t t-set="largo_total" t-value="largo_total + l.lote_id.largo"/>
+                                    <t t-set="total" t-value="total + l.total"/>
+                                    <t t-set="sobra" t-value="sobra + l.sobra"/>
+                                    
+                                    <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
+                                        <td style="border-left: 1px solid grey;text-align: center;"><span t-esc="panel"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.lote_id.largo"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.corte1"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.corte2"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.corte3"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.corte4"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.corte5"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.corte6"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.total"  t-options='{"widget":"float","precision":2}'/></td>
+                                        <td style="border-right: 1px solid grey;text-align: center;"><span t-esc="l.sobra" t-options='{"widget":"float","precision":2}'/></td>
+                                    </tr>
+                                </t>
+                                <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:25px;">
+                                    <td style="border-top: 1px solid grey;border-left: 1px solid grey;"><b>TOTALES</b></td>
+                                    <td style="border-top: 1px solid grey;text-align: center;"><b><span t-esc="largo_total"/></b></td>
+                                    <td colspan="6" style="border-top: 1px solid grey;text-align: center;"></td>
+                                    <td style="border-top: 1px solid grey;text-align: center;"><b><span t-esc="total" t-options='{"widget":"float","precision":2}'/></b></td>
+                                    <td style="border-top: 1px solid grey;border-right: 1px solid grey;text-align: center;"><b><span t-esc="sobra" t-options='{"widget":"float","precision":2}'/></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        
+                        
+                        <table class="table table-condensed" style="border-collapse: collapse;">
+                            <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
+                                <b><th colspan="3" style="border: 1px solid grey;vertical-align: middle;text-align: center;">TORNILLERIA Y ACCESORIOS</th></b>
+                            </tr>
+                            <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
+                                <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">NO.</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">DESCRIPCIÓN</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CANTIDAD</th></b>
+                            </tr>
+                            <tbody>
+                                <t t-set="numero" t-value="0"/>
+                                
+                                <t t-foreach="o.tornilleria_accesorio_ids" t-as="l">
+                                    <t t-set="numero" t-value="numero + 1"/>
+                                    
+                                    <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
+                                        <td style="border-left: 1px solid grey;text-align: center;"><span t-esc="numero"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.product_id.name"/></td>
+                                        <td style="border-right: 1px solid grey;text-align: center;"><span t-esc="l.cantidad" t-options='{"widget":"float","precision":2}'/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table class="table table-condensed" style="border-collapse: collapse;">
+                            <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
+                                <b><th colspan="3" style="border: 1px solid grey;vertical-align: middle;text-align: center;">MOLDURAS</th></b>
+                            </tr>
+                            <tr style="border: 1px solid grey;height:35px;vertical-align: middle;">
+                                <b><th style="border: 1px solid grey;vertical-align: middle;text-align: center;">NO.</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">DESCRIPCIÓN</th>
+                                <th style="border: 1px solid grey;vertical-align: middle;text-align: center;">CANTIDAD</th></b>
+                            </tr>
+                            <tbody>
+                                <t t-set="numero" t-value="0"/>
+                                
+                                <t t-foreach="o.moldura_panel_ids" t-as="l">
+                                    <t t-set="numero" t-value="numero + 1"/>
+                                    
+                                    <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
+                                        <td style="border-left: 1px solid grey;text-align: center;"><span t-esc="numero"/></td>
+                                        <td style="text-align: center;"><span t-esc="l.product_id.name"/></td>
+                                        <td style="border-right: 1px solid grey;text-align: center;"><span t-esc="l.cantidad" t-options='{"widget":"float","precision":2}'/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div >
+                            OBSERVACIONES:
+                            <div>
+                                <span t-esc="o.observaciones"/>
+                            </div>
+                        </div>
+                        <br/>
+                        <table class="table table-condensed" style="border-collapse: collapse;">
+                            <tr style="vertical-align: middle;">
+                                <td style="text-align:center;border: 1px solid grey;">Revisado por</td>
+                                <td style="text-align:center;border: 1px solid grey;">Autorizado por</td>
+                            </tr>
+                            <tr style="height: 40px">
+                                <td style="text-align:center;border: 1px solid grey;"><span t-esc="o.revisado_por.name"/></td>
+                                <td style="text-align:center;border: 1px solid grey;"><span t-esc="o.autorizado_por.name"/></td>
+                            </tr>
+                        </table>
+                    </div>  
+                </t>
+            </t>
+</template>
+<template id="report_orden_trabajo">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="domex.report_orden_de_trabajo" t-lang="doc.sale_id.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+</odoo>

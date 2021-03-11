@@ -9,7 +9,7 @@ Este es el módulo para la empresa Domex
 """,
     'author': 'Rodrigo Fernandez',
     'website': 'http://solucionesprisma.com/',
-    'depends': ['account','stock','mrp','sale_stock', 'purchase', 'report'],
+    'depends': ['account','stock','mrp','sale_stock', 'purchase', 'report', 'orden_trabajo'],
     'data': [
         'data/report_paperformat_data.xml',
         'views/domex_view.xml',
@@ -66,6 +66,7 @@ Este es el módulo para la empresa Domex
         'views/cuentas_pagar_cobrar.xml',
         'wizard/libro_mayor_compras.xml',
         'views/libro_mayor_compras.xml',
+        'views/report_orden_trabajo.xml',
     ],
     
     
