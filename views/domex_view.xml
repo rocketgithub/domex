@@ -134,6 +134,22 @@
                 </field>
            </field>
         </record>
+        
+        <record id="domex_orden_trabajo_form" model="ir.ui.view">
+            <field name="name">domex.orden.trabajo.form</field>
+            <field name="model">orden.trabajo</field>
+            <field name="inherit_id" ref="orden_trabajo.orden_trabajo_form"/>
+            <field name="arch" type="xml">
+                <field name="fecha" position="after">
+                    <field name="fecha_produccion"/>
+                </field>
+                <field name="sale_id" position="after">
+                    <field name="revisado_por"/>
+                    <field name="autorizado_por"/>
+                    <field name="observaciones"/>
+                </field>
+           </field>
+        </record>
 
     </data>
 </openerp>

@@ -89,4 +89,13 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     encargado_entrega = fields.Many2one('res.users', string='Encargado de la entrega')
+    
 
+class OrdenTrabajo(models.Model):
+    _inherit = 'orden.trabajo'
+
+    fecha_produccion = fields.Date('Fecha de Producción')
+    observaciones = fields.Text(string="Observaciones")
+    revisado_por = fields.Many2one('res.users', string='Revisado por')
+    autorizado_por = fields.Many2one('res.users', string='Autorizado por')
+    
