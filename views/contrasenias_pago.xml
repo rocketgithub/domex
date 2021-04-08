@@ -106,7 +106,7 @@
                                     <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:20px;">
                                         <td colspan="4" style="border-left: 1px solid grey;border-top: 1px solid grey;"></td>
                                         <td style="text-align: right;border-top: 1px solid grey;"><b>TOTAL</b></td>
-                                        <td style="text-align: right;border-top: 1px solid grey;"><span t-esc="factura['total']" t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/></td>
+                                        <td style="text-align: right;border-top: 1px solid grey;"><span t-esc="factura['total']" t-options='{"widget": "monetary", "display_currency": factura["currency"]}'/></td>
                                         <td style="border-right: 1px solid grey;border-top: 1px solid grey;"></td>
                                     </tr>
                                 </tbody>
