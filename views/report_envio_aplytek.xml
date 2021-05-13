@@ -50,8 +50,11 @@
                                     <td style="text-align: center;"><span t-esc="l.product_uom_qty"/></td>
                                     <td style="text-align: center;">
                                         <t t-if="l.quant_ids">
-                                            <t t-if="l.quant_ids[0].lot_id">
-                                                <span t-esc="l.quant_ids[0].lot_id.largo"/>
+                                            <t t-foreach="l.quant_ids" t-as="quant">
+                                                <t t-if="quant.lot_id">
+                                                    <span t-esc="quant.lot_id.largo"/>
+                                                    <br/>
+                                                </t>
                                             </t>
                                         </t>
                                     </td>

@@ -9,9 +9,11 @@ class WizardLibroMayorCompras(models.TransientModel):
 
     account_ids = fields.Many2many("account.account", string="Cuenta", required=True, default=False)
     compania_id = fields.Many2one('res.company', string='Compañía', required=True)
+    partner_id = fields.Many2one('res.partner', string='Partner')
+    
 
     def _print_report(self, data):
         data = self.pre_print_report(data)
-        data['form'].update({'compania_id': self.compania_id.name, 'account_ids': self.account_ids.ids})
+        data['form'].update({'compania_id': self.compania_id.name, 'account_ids': self.account_ids.ids, 'partner_id': self.partner_id.id})
         records = self.env[data['model']].browse(data.get('ids', []))
         return self.env['report'].with_context(landscape=True).get_action(records, 'domex.libro_mayor_compras', data=data) 
