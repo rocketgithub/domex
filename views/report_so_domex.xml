@@ -90,7 +90,7 @@
                             </tbody>
                         </table>
                         
-                        <div style="border: 1px solid grey;">
+                        <div style="border: 1px solid grey;page-break-inside: avoid">
                              Notas:
 
                             <table class="table table-condensed" style="border-collapse: collapse; font-size: 12px;">

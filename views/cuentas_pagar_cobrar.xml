@@ -2,8 +2,8 @@
 <odoo>
     <template id="cuentas_pagar_cobrar">
         <t t-call="report.html_container">
-        <t t-set="data_report_margin_top" t-value="12"/>
-        <t t-set="data_report_header_spacing" t-value="9"/>
+        <t t-set="data_report_margin_top" t-value="24"/>
+        <t t-set="data_report_header_spacing" t-value="15"/>
         <t t-set="data_report_dpi" t-value="110"/>
             
                 <div class="header">
@@ -32,7 +32,7 @@
 
 
 
-            <div class="page" style="padding-top:40px;">
+            <div class="page">
                 
                 <div>
                     <table class="table table-condensed">
@@ -77,69 +77,70 @@
                 <t t-set="total_debit" t-value="0"/>
                 <t t-set="total_credit" t-value="0"/>
                 <t t-foreach="docs" t-as="o">
-                    <br/><br/>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th style="border-bottom: 2px solid white;"><h4><strong t-esc="o.name"/></h4></th>
-                                <th colspan="7" style="border-bottom: 2px solid grey;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr t-foreach="lines(data, o)" t-as="line">
-                                <td style="width:90px;">
-                                    <span t-esc="line['date']"/>
-                                </td>
-                                <td style="width:80px;">
-                                    <span t-esc="line['code']"/>
-                                </td>
-                                <td style="width:90px;">
-                                    <span t-esc="line['a_code']"/>
-                                </td>
-                                <td style="width:350px;">
-                                    <span t-esc="line['displayed_name']"/>
-                                </td>
-                                <td style="width:180px;">
-                                    <span t-esc="line['a_name']"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-esc="line['progress']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
-                                </td>
-                                <td class="text-right" t-if="data['form']['amount_currency']">
-                                    <t t-if="line['currency_id']">
-                                      <span t-esc="line['amount_currency']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
-                                    </t>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                </td>
-                                <td class="text-right;" style="background-color: whitesmoke">
-                                    <h4><strong>TOTAL</strong></h4>
-                                </td>
-                                <td class="text-center" style="background-color: whitesmoke">
-                                    <h5><strong t-esc="sum_partner(data, o, 'debit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h5>
-                                </td>
-                                <td class="text-center" style="background-color: whitesmoke">
-                                    <h5><strong t-esc="sum_partner(data, o, 'credit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h5>
-                                </td>
-                                <td class="text-center" style="background-color: whitesmoke">
-                                    <h4><strong t-esc="sum_partner(data, o, 'debit - credit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
-                                    <t t-set="subs" t-value="sum_partner(data, o, 'debit - credit')"/>
-                                    <t t-set="total" t-value="total + subs"/>
-                                    <t t-set="total_debit" t-value="total_debit + sum_partner(data, o, 'debit')"/>
-                                    <t t-set="total_credit" t-value="total_credit + sum_partner(data, o, 'credit')"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                    <t t-if="not data['form']['partner_id'] or data['form']['partner_id'] and o.id == data['form']['partner_id']">
+                        <br/><br/>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="border-bottom: 2px solid white;"><h4><strong t-esc="o.name"/></h4></th>
+                                    <th colspan="7" style="border-bottom: 2px solid grey;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="lines(data, o)" t-as="line">
+                                    <td style="width:90px;">
+                                        <span t-esc="line['date']"/>
+                                    </td>
+                                    <td style="width:80px;">
+                                        <span t-esc="line['move_name']"/>
+                                    </td>
+                                    <td style="width:90px;">
+                                        <span t-esc="line['a_code']"/>
+                                    </td>
+                                    <td style="width:350px;">
+                                        <span t-esc="line['displayed_name']"/>
+                                    </td>
+                                    <td style="width:180px;">
+                                        <span t-esc="line['a_name']"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['progress']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td class="text-right" t-if="data['form']['amount_currency']">
+                                        <t t-if="line['currency_id']">
+                                          <span t-esc="line['amount_currency']" t-options="{'widget': 'monetary', 'display_currency': line['currency_id']}"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                    </td>
+                                    <td class="text-right;" style="background-color: whitesmoke">
+                                        <h4><strong>TOTAL</strong></h4>
+                                    </td>
+                                    <td class="text-center" style="background-color: whitesmoke">
+                                        <h5><strong t-esc="sum_partner(data, o, 'debit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h5>
+                                    </td>
+                                    <td class="text-center" style="background-color: whitesmoke">
+                                        <h5><strong t-esc="sum_partner(data, o, 'credit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h5>
+                                    </td>
+                                    <td class="text-center" style="background-color: whitesmoke">
+                                        <h4><strong t-esc="sum_partner(data, o, 'debit - credit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4>
+                                        <t t-set="subs" t-value="sum_partner(data, o, 'debit - credit')"/>
+                                        <t t-set="total" t-value="total + subs"/>
+                                        <t t-set="total_debit" t-value="total_debit + sum_partner(data, o, 'debit')"/>
+                                        <t t-set="total_credit" t-value="total_credit + sum_partner(data, o, 'credit')"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
                 </t>
                 
                 <br/>

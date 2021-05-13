@@ -99,3 +99,70 @@ class OrdenTrabajo(models.Model):
     revisado_por = fields.Many2one('res.users', string='Revisado por')
     autorizado_por = fields.Many2one('res.users', string='Autorizado por')
     
+    def obtener_cortes(self, cortes):
+        medidas = []
+        res = []
+        
+        for line in cortes:
+            if line.corte1 not in medidas:
+                medidas.append(line.corte1)
+                res.append({'medida': line.corte1, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.corte1:
+                    item['cantidad'] += line.corte1 * line.product_qty
+            
+            if line.corte2 not in medidas:
+                medidas.append(line.corte2)
+                res.append({'medida': line.corte2, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.corte2:
+                    item['cantidad'] += line.corte2 * line.product_qty
+                    
+            if line.corte3 not in medidas:
+                medidas.append(line.corte3)
+                res.append({'medida': line.corte3, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.corte3:
+                    item['cantidad'] += line.corte3 * line.product_qty
+            
+            if line.corte4 not in medidas:
+                medidas.append(line.corte4)
+                res.append({'medida': line.corte4, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.corte4:
+                    item['cantidad'] += line.corte4 * line.product_qty
+            
+            if line.corte5 not in medidas:
+                medidas.append(line.corte5)
+                res.append({'medida': line.corte5, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.corte5:
+                    item['cantidad'] += line.corte5 * line.product_qty
+            
+            if line.corte6 not in medidas:
+                medidas.append(line.corte6)
+                res.append({'medida': line.corte6, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.corte6:
+                    item['cantidad'] += line.corte6 * line.product_qty
+                    
+            if line.sobra not in medidas:
+                medidas.append(line.sobra)
+                res.append({'medida': line.sobra, 'cantidad': 0})
+            for item in res:
+                if item['medida'] == line.sobra:
+                    item['cantidad'] += line.sobra * line.product_qty            
+        return res
+
+
+class AccountMove(models.Model):
+    _inherit = "account.move"
+
+    tipo_gasto = fields.Selection([('compra', 'Compra/Bien'), ('servicio', 'Servicio'), ('importacion', 'Importación/Exportación'), ('combustible', 'Combustible'), ('mixto', 'Mixto')], string="Tipo de Gasto")
+    
+            
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
+
+    tipo_gasto = fields.Selection([('compra', 'Compra/Bien'), ('servicio', 'Servicio'), ('importacion', 'Importación/Exportación'), ('combustible', 'Combustible'), ('mixto', 'Mixto')], string="Tipo de Gasto", related='move_id.tipo_gasto',store=True)
+    

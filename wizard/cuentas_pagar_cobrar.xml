@@ -14,6 +14,7 @@
                 <field name="reconciled"/>
                 <newline/>
                 <field name="compania_id"/>
+                <field name="partner_id"/>
                 <newline/>
             </xpath>
         </data>

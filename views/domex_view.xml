@@ -150,6 +150,30 @@
                 </field>
            </field>
         </record>
+        
+        
+        <record id="domex_view_move_line_form" model="ir.ui.view">
+            <field name="name">domex.account.move.line.form</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_form"/>
+            <field name="arch" type="xml">
+                <field name="move_id" position="after">
+                    <field name="tipo_gasto"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="domex_view_move_form" model="ir.ui.view">
+            <field name="name">domex.account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="tipo_gasto"/>
+                </field>
+            </field>
+        </record>
+        
 
     </data>
 </openerp>
