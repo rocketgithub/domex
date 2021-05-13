@@ -161,25 +161,9 @@ class AccountMove(models.Model):
 
     tipo_gasto = fields.Selection([('compra', 'Compra/Bien'), ('servicio', 'Servicio'), ('importacion', 'Importación/Exportación'), ('combustible', 'Combustible'), ('mixto', 'Mixto')], string="Tipo de Gasto")
     
-    @api.model
-    def create(self, vals):
-        move = super(AccountMove, self).create(vals)
-        if move.tipo_gasto:
-            for line in move.line_ids:
-                line.tipo_gasto = move.tipo_gasto
-        return move
-    
-    @api.multi
-    def write(self, vals):
-        super(AccountMove, self).write(vals)
-        if self.tipo_gasto:
-            for line in self.line_ids:
-                line.tipo_gasto = self.tipo_gasto
-        return True 
-    
             
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
-    tipo_gasto = fields.Selection([('compra', 'Compra/Bien'), ('servicio', 'Servicio'), ('importacion', 'Importación/Exportación'), ('combustible', 'Combustible'), ('mixto', 'Mixto')], string="Tipo de Gasto")
+    tipo_gasto = fields.Selection([('compra', 'Compra/Bien'), ('servicio', 'Servicio'), ('importacion', 'Importación/Exportación'), ('combustible', 'Combustible'), ('mixto', 'Mixto')], string="Tipo de Gasto", related='move_id.tipo_gasto',store=True)
     
