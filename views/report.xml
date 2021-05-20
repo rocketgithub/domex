@@ -418,6 +418,32 @@
             name="domex.report_orden_trabajo"
             paperformat="domex.paperformat_margin_top_5"
         />
-        
+
+        <record id="asistente_costos_reporte" model="ir.ui.view">
+            <field name="name">domex.asistente_reporte_costo_metros</field>
+            <field name="model">domex.asistente_reporte_costo_metros</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Seleccione productos">
+                    <group>
+                        <separator colspan="4" string="Productos"/>
+                        <field name="producto_ids" nolabel="1"/>
+                    </group>
+                    <group>
+                        <field name="name" invisible="1"/>                    
+                        <field name="archivo" readonly="1" filename="name"/>
+                    </group>
+                    <footer>
+                        <button name="reporte_excel" string="Reporte excel" type="object" class="oe_highlight"/>
+                        o
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="window_reporte_costos" name="Costo de inventario en metros" res_model="domex.asistente_reporte_costo_metros" view_mode="form" target="new"/>
+        <menuitem action="window_reporte_costos" id="menu_asistente_reporte_costos" parent="stock.menu_warehouse_report"/>
+
     </data>
 </openerp>
