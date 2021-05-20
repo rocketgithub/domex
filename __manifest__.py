@@ -67,6 +67,8 @@ Este es el módulo para la empresa Domex
         'wizard/libro_mayor_compras.xml',
         'views/libro_mayor_compras.xml',
         'views/report_orden_trabajo.xml',
+        'views/product_template_views.xml',
+        'views/stock_quant_views.xml',
     ],
     
     
