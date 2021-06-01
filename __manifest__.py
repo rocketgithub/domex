@@ -70,7 +70,7 @@ Este es el módulo para la empresa Domex
         'views/product_template_views.xml',
         'views/stock_quant_views.xml',
         'wizard/libro_diario.xml',
-    
+     ],
     
     
     
