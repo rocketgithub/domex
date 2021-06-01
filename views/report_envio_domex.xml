@@ -46,14 +46,17 @@
                                 <t t-foreach="o.move_lines" t-as="l">
                                     <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:35px;">
                                         <td style="border-left: 1px solid grey;"><span t-esc="numero"/></td>
-                                        <td style="text-align: center;"><span t-esc="l.product_uom_qty"/></td>
                                         <td style="text-align: center;">
                                             <t t-if="l.quant_ids">
-                                                <t t-foreach="l.quant_ids" t-as="quant">
-                                                    <t t-if="quant.lot_id">
-                                                        <span t-esc="quant.lot_id.largo"/>
-                                                        <br/>
-                                                    </t>
+                                                <t t-foreach="o.obtener_medidas(l.quant_ids)" t-as="res">
+                                                    <span t-esc="res['cantidad']"/><br/>
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <t t-if="l.quant_ids">
+                                                <t t-foreach="o.obtener_medidas(l.quant_ids)" t-as="res">
+                                                    <span t-esc="res['medida']"/><br/>
                                                 </t>
                                             </t>
                                         </td>

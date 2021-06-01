@@ -69,8 +69,8 @@ Este es el módulo para la empresa Domex
         'views/report_orden_trabajo.xml',
         'views/product_template_views.xml',
         'views/stock_quant_views.xml',
-    ],
-    
+        'wizard/libro_diario.xml',
+     ],
     
     
     

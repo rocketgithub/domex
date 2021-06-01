@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+import logging
 
 class Color(models.Model):
     _name = 'domex.color'
@@ -90,6 +91,16 @@ class StockPicking(models.Model):
 
     encargado_entrega = fields.Many2one('res.users', string='Encargado de la entrega')
     
+    def obtener_medidas(self, quant_ids):
+        res = []
+        medidas_agrupadas = {}
+        for quant in quant_ids:
+            if quant.lot_id.largo not in medidas_agrupadas:
+                medidas_agrupadas[quant.lot_id.largo] = {'medida': quant.lot_id.largo, 'cantidad': 0}
+            medidas_agrupadas[quant.lot_id.largo]['cantidad'] += quant.qty
+        res = medidas_agrupadas.values()
+        return res
+    
 
 class OrdenTrabajo(models.Model):
     _inherit = 'orden.trabajo'
@@ -100,58 +111,32 @@ class OrdenTrabajo(models.Model):
     autorizado_por = fields.Many2one('res.users', string='Autorizado por')
     
     def obtener_cortes(self, cortes):
-        medidas = []
         res = []
-        
+        cortes_agrupados = {}
         for line in cortes:
-            if line.corte1 not in medidas:
-                medidas.append(line.corte1)
-                res.append({'medida': line.corte1, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.corte1:
-                    item['cantidad'] += line.corte1 * line.product_qty
-            
-            if line.corte2 not in medidas:
-                medidas.append(line.corte2)
-                res.append({'medida': line.corte2, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.corte2:
-                    item['cantidad'] += line.corte2 * line.product_qty
-                    
-            if line.corte3 not in medidas:
-                medidas.append(line.corte3)
-                res.append({'medida': line.corte3, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.corte3:
-                    item['cantidad'] += line.corte3 * line.product_qty
-            
-            if line.corte4 not in medidas:
-                medidas.append(line.corte4)
-                res.append({'medida': line.corte4, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.corte4:
-                    item['cantidad'] += line.corte4 * line.product_qty
-            
-            if line.corte5 not in medidas:
-                medidas.append(line.corte5)
-                res.append({'medida': line.corte5, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.corte5:
-                    item['cantidad'] += line.corte5 * line.product_qty
-            
-            if line.corte6 not in medidas:
-                medidas.append(line.corte6)
-                res.append({'medida': line.corte6, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.corte6:
-                    item['cantidad'] += line.corte6 * line.product_qty
-                    
-            if line.sobra not in medidas:
-                medidas.append(line.sobra)
-                res.append({'medida': line.sobra, 'cantidad': 0})
-            for item in res:
-                if item['medida'] == line.sobra:
-                    item['cantidad'] += line.sobra * line.product_qty            
+            if line.corte1 not in cortes_agrupados:
+                cortes_agrupados[line.corte1] = {'medida': line.corte1, 'cantidad': 0}
+            cortes_agrupados[line.corte1]['cantidad'] += line.corte1 * line.product_qty
+            if line.corte2 not in cortes_agrupados:
+                cortes_agrupados[line.corte2] = {'medida': line.corte2, 'cantidad': 0}
+            cortes_agrupados[line.corte2]['cantidad'] += line.corte2 * line.product_qty
+            if line.corte3 not in cortes_agrupados:
+                cortes_agrupados[line.corte3] = {'medida': line.corte3, 'cantidad': 0}
+            cortes_agrupados[line.corte3]['cantidad'] += line.corte3 * line.product_qty
+            if line.corte4 not in cortes_agrupados:
+                cortes_agrupados[line.corte4] = {'medida': line.corte4, 'cantidad': 0}
+            cortes_agrupados[line.corte4]['cantidad'] += line.corte4 * line.product_qty
+            if line.corte5 not in cortes_agrupados:
+                cortes_agrupados[line.corte5] = {'medida': line.corte5, 'cantidad': 0}
+            cortes_agrupados[line.corte5]['cantidad'] += line.corte5 * line.product_qty
+            if line.corte6 not in cortes_agrupados:
+                cortes_agrupados[line.corte6] = {'medida': line.corte6, 'cantidad': 0}
+            cortes_agrupados[line.corte6]['cantidad'] += line.corte6 * line.product_qty
+            if line.sobra not in cortes_agrupados:
+                cortes_agrupados[line.sobra] = {'medida': line.sobra, 'cantidad': 0}
+            cortes_agrupados[line.sobra]['cantidad'] += line.sobra * line.product_qty
+
+        res = cortes_agrupados.values()
         return res
 
 
