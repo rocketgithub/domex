@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="domex_wizard_libro_diario" model="ir.ui.view">
+        <field name="name">domex.wizard_libro_diario</field>
+        <field name="model">l10n_gt_extra.asistente_reporte_diario</field>
+        <field name="inherit_id" ref="l10n_gt_extra.asistente_reporte_diario"/>
+        <field name="arch" type="xml">
+            <field name="agrupado_por_dia" position="after">
+                <field name="agrupado_por_partida"/>
+            </field>
+        </field>
+    </record>
+    
+    
+    <template id="domex_report_libro_diario" inherit_id="l10n_gt_extra.reporte_diario">
+        <xpath expr="//table/t[1]" position="attributes">
+           <attribute name="t-if">data['agrupado_por_dia'] == true or data['agrupado_por_partida'] == true</attribute>
+        </xpath>
+        <xpath expr="//table/t[1]/tbody/t/tr/td[2]" position="inside">
+            <t t-if="data['agrupado_por_partida'] == true">
+                <span t-esc="l['move_name']"/>
+            </t>
+        </xpath>
+    </template>
+        
+    </data>
+</odoo>
