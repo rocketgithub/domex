@@ -12,6 +12,13 @@ import logging
 class ReportPartnerLedger(models.AbstractModel):
     _inherit = "report.account.report_partnerledger"
     _name = 'report.domex.cuentas_pagar_cobrar'
+    
+    def _lines(self, data, partner):
+        res = super(ReportPartnerLedger, self)._lines(data, partner)
+        for line in res:
+            move = self.env['account.move.line'].search([('id','=',line['id'])])
+            line.update({'fecha_vencimiento': move.date_maturity})
+        return res
    
     @api.model
     def render_html(self, docids, data=None):
@@ -65,4 +72,3 @@ class ReportPartnerLedger(models.AbstractModel):
             'sum_partner': self._sum_partner,
         }
         return self.env['report'].render('domex.cuentas_pagar_cobrar', docargs)
-    

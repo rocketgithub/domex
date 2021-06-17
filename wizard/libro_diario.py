@@ -62,8 +62,8 @@ class ReporteDiario(models.AbstractModel):
             llave = 'partida'
             for l in lineas:
                 if l[llave] not in cuentas_agrupadas:
-                    move_name = self.env['account.move'].search([('id','=',l[llave])]).name
-                    cuentas_agrupadas[l[llave]] = {'partida': l[llave], 'move_name': move_name, 'fecha': l['fecha'], 'cuentas': [], 'total_debe': 0, 'total_haber': 0}
+                    move = self.env['account.move'].search([('id','=',l[llave])])
+                    cuentas_agrupadas[l[llave]] = {'partida': l[llave], 'move_name': move.name, 'ref': move.ref, 'fecha': l['fecha'], 'cuentas': [], 'total_debe': 0, 'total_haber': 0}
                 cuentas_agrupadas[l[llave]]['cuentas'].append(l)
 
             for la in cuentas_agrupadas.values():
@@ -72,7 +72,6 @@ class ReporteDiario(models.AbstractModel):
                     la['total_haber'] += l['haber']
 
             lineas = cuentas_agrupadas.values()
-            logging.getLogger('LINEAS POR PARTIDAS').warn(lineas)
             res = {'lineas': lineas,'totales': totales }
         return res
             
