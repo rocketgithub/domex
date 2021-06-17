@@ -33,15 +33,14 @@
 
 
             <div class="page">
-                
                 <div>
                     <table class="table table-condensed">
                         <tr style="border_top: 2px solid white">
                             <td style="border-left: 2px solid grey;border_top: 2px solid white">
                                 <div>
-                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['payable']"><h4>CUENTAS POR PAGAR GENERAL</h4></t>
-                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['receivable']"><h4>COBRANZA GENERAL</h4></t>
-                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['payable', 'receivable']"><h4>COBRANZA GENERAL y CUENTAS POR PAGAR GENERAL</h4></t>
+                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['payable']"><h2>CUENTAS POR PAGAR GENERAL</h2></t>
+                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['receivable']"><h2>COBRANZA GENERAL</h2></t>
+                                    <t t-if="data['computed']['ACCOUNT_TYPE'] == ['payable', 'receivable']"><h2>COBRANZA GENERAL y CUENTAS POR PAGAR GENERAL</h2></t>
                                 </div>
                             </td>
                             <td style="width:200px;text-align: right;">
@@ -56,34 +55,30 @@
                         </tr>
                     </table>
                 </div>
-                
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                                <th style="border-botom: 2px solid grey;width:80px;">FECHA DE EMISION</th>
-                                <th style="border-botom: 2px solid grey;width:80px;">ASIENTO CONTABLE</th>
-                                <th style="border-botom: 2px solid grey;width:90px;">FECHA VENCIMIENTO</th>
-                                <th style="border-botom: 2px solid grey;">FOLIO INTERNO</th>
-                                <th style="border-botom: 2px solid grey;width:180px;">DESCRIPCIÓN</th>
-                                <th style="border-botom: 2px solid grey;width:80px;">DEBE</th>
-                                <th style="border-botom: 2px solid grey;width:80px;">HABER</th>
-                                <th style="border-botom: 2px solid grey;width:80px;">SALDO PENDIENTE</th>
-                                <th style="border-botom: 2px solid grey;" t-if="data['form']['amount_currency']">MONEDA</th>
-                            </tr>
-                    </thead>
-                </table>
-                
+    
                 <t t-set="total" t-value="0"/>
                 <t t-set="total_debit" t-value="0"/>
                 <t t-set="total_credit" t-value="0"/>
                 <t t-foreach="docs" t-as="o">
                     <t t-if="not data['form']['partner_id'] or data['form']['partner_id'] and o.id == data['form']['partner_id']">
                         <br/><br/>
-                        <table class="table table-condensed">
+                        <table class="table table-condensed" style="page-break-inside: avoid">
                             <thead>
                                 <tr>
-                                    <th style="border-bottom: 2px solid white;"><h4><strong t-esc="o.name"/></h4></th>
-                                    <th colspan="7" style="border-bottom: 2px solid grey;"></th>
+                                    <th colspan="8" style="border-bottom: 2px solid white;"><h4><strong t-esc="o.name"/></h4></th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <th style="border-botom: 2px solid grey;width:80px;">FECHA DE EMISION</th>
+                                    <th style="border-botom: 2px solid grey;width:80px;">NO. FACTURA</th>
+                                    <th style="border-botom: 2px solid grey;width:90px;">FECHA VENCIMIENTO</th>
+                                    <th style="border-botom: 2px solid grey;">NO. CUENTA CONTABLE</th>
+                                    <th style="border-botom: 2px solid grey;width:180px;">DESCRIPCIÓN</th>
+                                    <th style="border-botom: 2px solid grey;width:80px;">DEBE</th>
+                                    <th style="border-botom: 2px solid grey;width:80px;">HABER</th>
+                                    <th style="border-botom: 2px solid grey;width:80px;">SALDO PENDIENTE</th>
+                                    <th style="border-botom: 2px solid grey;" t-if="data['form']['amount_currency']">MONEDA</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,13 +90,13 @@
                                         <span t-esc="line['move_name']"/>
                                     </td>
                                     <td style="width:90px;">
-                                        <span t-esc="line['a_code']"/>
+                                        <span t-esc="line['fecha_vencimiento']"/>
                                     </td>
                                     <td style="width:350px;">
-                                        <span t-esc="line['displayed_name']"/>
+                                        <span t-esc="line['a_code']"/>
                                     </td>
                                     <td style="width:180px;">
-                                        <span t-esc="line['a_name']"/>
+                                        <span t-esc="line['displayed_name']"/>
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
@@ -148,9 +143,9 @@
                     <tr>
                         <td style="border: 2px solid white;"></td>
                         <td style="border-top: 2px solid white;border-bottom: 2px solid white;border-left: 2px solid white; width:120px;"><h4>TOTALES</h4></td>
-                        <td style="border: 2px solid grey;width:180px;"><h5><span t-esc="total_debit"/></h5></td>
-                        <td style="border: 2px solid grey;width:180px;"><h5><span t-esc="total_credit"/></h5></td>
-                        <td style="border: 2px solid grey;width:180px;"><h4><span t-esc="total"/></h4></td>
+                        <td style="border: 2px solid grey;width:180px;"><h5><span t-esc="total_debit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h5></td>
+                        <td style="border: 2px solid grey;width:180px;"><h5><span t-esc="total_credit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h5></td>
+                        <td style="border: 2px solid grey;width:180px;"><h4><span t-esc="total" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></h4></td>
                     </tr>
                 </table>
             </div>
