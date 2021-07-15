@@ -18,7 +18,8 @@
             </xpath>
             <xpath expr="//field[@name='journal_ids']" position="replace">
                 <newline/>
-                <field name="account_ids" widget="many2many_tags"/>
+                <field name="local_account_ids" widget="many2many_tags"/>
+                <field name="exterior_account_ids" widget="many2many_tags"/>
                 <newline/>
             </xpath>
         </data>
