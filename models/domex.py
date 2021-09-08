@@ -116,25 +116,25 @@ class OrdenTrabajo(models.Model):
         for line in cortes:
             if line.corte1 not in cortes_agrupados:
                 cortes_agrupados[line.corte1] = {'medida': line.corte1, 'cantidad': 0}
-            cortes_agrupados[line.corte1]['cantidad'] += line.corte1 * line.product_qty
+            cortes_agrupados[line.corte1]['cantidad'] += line.product_qty
             if line.corte2 not in cortes_agrupados:
                 cortes_agrupados[line.corte2] = {'medida': line.corte2, 'cantidad': 0}
-            cortes_agrupados[line.corte2]['cantidad'] += line.corte2 * line.product_qty
+            cortes_agrupados[line.corte2]['cantidad'] += line.product_qty
             if line.corte3 not in cortes_agrupados:
                 cortes_agrupados[line.corte3] = {'medida': line.corte3, 'cantidad': 0}
-            cortes_agrupados[line.corte3]['cantidad'] += line.corte3 * line.product_qty
+            cortes_agrupados[line.corte3]['cantidad'] += line.product_qty
             if line.corte4 not in cortes_agrupados:
                 cortes_agrupados[line.corte4] = {'medida': line.corte4, 'cantidad': 0}
-            cortes_agrupados[line.corte4]['cantidad'] += line.corte4 * line.product_qty
+            cortes_agrupados[line.corte4]['cantidad'] += line.product_qty
             if line.corte5 not in cortes_agrupados:
                 cortes_agrupados[line.corte5] = {'medida': line.corte5, 'cantidad': 0}
-            cortes_agrupados[line.corte5]['cantidad'] += line.corte5 * line.product_qty
+            cortes_agrupados[line.corte5]['cantidad'] += line.product_qty
             if line.corte6 not in cortes_agrupados:
                 cortes_agrupados[line.corte6] = {'medida': line.corte6, 'cantidad': 0}
-            cortes_agrupados[line.corte6]['cantidad'] += line.corte6 * line.product_qty
+            cortes_agrupados[line.corte6]['cantidad'] += line.product_qty
             if line.sobra not in cortes_agrupados:
                 cortes_agrupados[line.sobra] = {'medida': line.sobra, 'cantidad': 0}
-            cortes_agrupados[line.sobra]['cantidad'] += line.sobra * line.product_qty
+            cortes_agrupados[line.sobra]['cantidad'] += line.product_qty
 
         res = cortes_agrupados.values()
         return res

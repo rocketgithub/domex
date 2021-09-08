@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="domex_reporte_inventario" inherit_id="l10n_gt_extra.reporte_inventario">
+        <xpath expr="//div[@class='header']" position="replace">
+            <div style="text-align: right;" class="header">
+                Folio: <span t-esc="data['folio_inicial']"></span>
+            </div>
+        </xpath>
+    </template>
+</odoo>
