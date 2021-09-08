@@ -25,24 +25,28 @@
                         </table>
                         <table  class="table table-condensed" style="border-style: none;">
                             <tr>
+                                <td colspan="4" style="border-top: none;"></td>
                                 <td style="border-top: none;">FECHA:</td>
-                                <td colspan="5" style="border-top: none">
+                                <td colspan="2" style="border-top: none;">
                                     <span t-field="o.confirmation_date"/>
                                 </td>
                             </tr>
                             <tr style="vertical-align: bottom;">
                                 <td style="width:100px;border-top: none;">ATENCIÓN A:</td>
-                                <td colspan="2" style="width:150px; border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion.name"/></td>
-                                <td style="width:95px;border-top: none">CLIENTE:</td>
-                                <td colspan="3" style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.partner_id"/></td>
+                                <td colspan="6" style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.atencion.name"/></td>
+                                
+                            </tr>
+                            <tr style="vertical-align: bottom;">
+                                <td style="width:100px;border-top: none;">CLIENTE:</td>
+                                <td colspan="6" style="border-bottom: 1px solid grey;border-top: none"><span t-field="o.partner_id"/></td>
                             </tr>
                             <tr style="vertical-align: bottom;">
                                 <td style="width:97px;border-top: none;">PROYECTO:</td>
-                                <td style="border-bottom: 1px solid grey;"><span t-field="o.proyecto"/></td>
+                                <td style="width:140px;border-bottom: 1px solid grey;"><span t-field="o.proyecto"/></td>
                                 <td style="width:50px;">TEL:</td>
-                                <td style="border-bottom: 1px solid grey;border-top: none;"><span t-field="o.atencion.phone"/></td>
+                                <td style="width:95px;border-bottom: 1px solid grey;border-top: none;"><span t-field="o.atencion.phone"/></td>
                                 <td style="width:70px;">EMAIL:</td>
-                                <td style="border-bottom: 1px solid grey; width:230px"><span t-field="o.atencion.email"/></td>
+                                <td style="border-bottom: 1px solid grey; width:190px"><span t-field="o.atencion.email"/></td>
                             </tr>
                         </table>
                         <table class="table table-condensed;">
@@ -74,57 +78,35 @@
                                         <td style="border-right: 1px solid grey;text-align: right;"><span t-esc="l.price_total"  t-options='{"widget":"float","precision":2}'/></td>
                                     </tr>
                                 </t>
-                                <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:25px;">
-                                    <td colspan="4" style="border-top: 1px solid grey;border-left: 1px solid grey;"></td>
-                                    <td style="border-top: 1px solid grey;text-align: right;width:105px"><b>TOTAL BASE</b></td>
-                                    <td style="border-top: 1px solid grey;border-right: 1px solid grey;text-align: right;"><span t-esc="o.amount_untaxed"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+                                <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:15px;line-height:70%;">
+                                    <td colspan="4" style="border-top: 1px solid grey;border-left: 1px solid grey;line-height:70%;"></td>
+                                    <td style="border-top: 1px solid grey;text-align: right;width:105px;line-height:70%;"><b>TOTAL BASE</b></td>
+                                    <td style="border-top: 1px solid grey;border-right: 1px solid grey;text-align: right;line-height:70%;"><span t-esc="o.amount_untaxed"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
-                                <tr style="vertical-align: middle;">
-                                    <td colspan="4" style="border-left: 1px solid grey; border-top: 1px solid white;"></td>
-                                    <td style="text-align: right;border-top: 1px solid white;"><b>IMPUESTOS</b></td>
-                                    <td style="border-right: 1px solid grey;border-right: 1px solid grey;text-align: right;border-top: 1px solid white;"><span t-esc="o.amount_tax"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+                                <tr style="vertical-align: middle;height:15px;line-height:70%;">
+                                    <td colspan="4" style="border-left: 1px solid grey; border-top: 1px solid white;line-height:70%;"></td>
+                                    <td style="text-align: right;border-top: 1px solid white;line-height:70%;"><b>IMPUESTOS</b></td>
+                                    <td style="border-right: 1px solid grey;border-right: 1px solid grey;text-align: right;border-top: 1px solid white;line-height:70%;"><span t-esc="o.amount_tax"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:20px;">
-                                    <td colspan="4" style="border-left: 1px solid grey;border-top: 1px solid white;"></td>
-                                    <td style="text-align: right;border-top: 1px solid white;"><b>TOTAL</b></td>
-                                    <td style="border-right: 1px solid grey;border-right: 1px solid grey;text-align: right;border-top: 1px solid white;"><span t-esc="o.amount_total"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+                                <tr style="border-bottom: 1px solid grey;vertical-align: middle;height:15px;line-height:70%;"> 
+                                    <td colspan="4" style="border-left: 1px solid grey;border-top: 1px solid white;line-height:70%;"></td>
+                                    <td style="text-align: right;border-top: 1px solid white;line-height:70%;"><b>TOTAL</b></td>
+                                    <td style="border-right: 1px solid grey;border-right: 1px solid grey;text-align: right;border-top: 1px solid white;line-height:70%;"><span t-esc="o.amount_total"  t-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                             </tbody>
                         </table>
                         <br/>
-                        <div style="border: 1px solid grey;page-break-inside: avoid">
-                            Notas
-                            <table class="table table-condensed" style="border-collapse: collapse;">
-                                <tr style="vertical-align: middle;">
-                                    <td style="border-top: none; width:70px;"></td>
-                                    <td style="text-align:left;border-top: none;">1. Validez de la oferta:   <span t-field="o.validity_date"/></td>
-                                    <td style="text-align:left;border-top: none;">5. Precios no incluyen:</td>
-                                    <td style="border-top: none;"></td>
-                                    <td style="border-top: none;"></td>
-                                </tr>
-                                <tr style="vertical-align: middle;">
-                                    <td style="border-top: none;"></td>
-                                    <td style="text-align:left;border-top: none;">2. Forma de pago:  <span t-field="o.payment_term_id"/></td>
-                                    <td style="text-align:left;border-top: none;font-size: 11px;"><span t-field="o.no_incluyen"/></td>
-                                    <td style="border-top: none;"></td>
-                                    <td style="border-top: none;"></td>
-                                </tr>
-                                <tr style="vertical-align: middle;">
-                                    <td style="border-top: none;"></td>
-                                    <td style="text-align:left;border-top: none;">3. Condiciones:       <span t-field="o.note"/></td>
-                                    <td style="text-align:left;border-top: none;">6. Tiempo de entrega:     <span t-field="o.delivery"/></td>
-                                    <td style="border-top: none;"></td>
-                                </tr>
-                                <tr style="vertical-align: middle;">
-                                    <td style="border-top: none;"></td>
-                                    <td style="text-align:left;border-top: none;">4. Precios incluyen:      <span t-field="o.incluyen"/></td>
-                                    <td style="text-align:left;border-top: none;">7. Tiempo de instalación:     <span t-field="o.tiempo_instalacion"/></td>
-                                    <td style="border-top: none;"></td>
-                                </tr>
-                            </table> 
+                        <div style="page-break-inside: avoid">
+                            <div style="text-align: center;">Notas</div><br/>
+                            <b>1. Forma de Pago:</b> <span t-field="o.payment_term_id"/><br/>
+                            <b>2. Validez de la oferta:</b> <span t-field="o.oferta_por"/><br/>
+                            <b>3. Tiempo de entrega:</b> <span t-field="o.tiempo_estimado_entrega"/><br/>
+                            <b>4. Condiciones:</b> <span t-field="o.note"/><br/>
+                            <b>5. Precios Incluyen:</b> <span t-field="o.incluyen"/><br/>
+                            <b>6. Precios no incluyen:</b> <span t-field="o.no_incluyen"/> <br/>
                             <br/>
-                            <div style="font-size: 12px; left:50%; text-align: center;">
-                                Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
+                            Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
+                            <div style="text-align: center;">
                                 <br/><br/>
                                 Atentamente,
                                 <br/>APLYTEK, S.A
