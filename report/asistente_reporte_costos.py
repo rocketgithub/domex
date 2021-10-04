@@ -37,16 +37,25 @@ class AsistenteReporteCostoInventarioMetros(models.TransientModel):
                 hoja.write(y, 4, 'Costo total en metros')
                 y += 1
                 quants = self.env['stock.quant'].search([('product_id', '=', producto.id)])
+                lineas = {}
                 for q in quants:
                     if q.lot_id:
                         lote = q.lot_id.name
                     else:
-                        lote = ''
+                        lote = 'Indefinido'
+                        
+                    if lote not in lineas:
+                        lineas[lote] = {'cantidad': 0, 'cantidad_en_metros': 0, 'costo_por_metro': q.product_id.costo_por_metro, 'costo_total_en_metros': 0}
+                    lineas[lote]['cantidad'] += q.qty
+                    lineas[lote]['cantidad_en_metros'] += q.cantidad_en_metros
+                    lineas[lote]['costo_total_en_metros'] += q.costo_total_en_metros
+
+                for lote in lineas:
                     hoja.write(y, 0, lote)
-                    hoja.write(y, 1, q.qty)
-                    hoja.write(y, 2, q.cantidad_en_metros)
-                    hoja.write(y, 3, q.product_id.costo_por_metro)
-                    hoja.write(y, 4, q.costo_total_en_metros)
+                    hoja.write(y, 1, lineas[lote]['cantidad'])
+                    hoja.write(y, 2, lineas[lote]['cantidad_en_metros'])
+                    hoja.write(y, 3, lineas[lote]['costo_por_metro'])
+                    hoja.write(y, 4, lineas[lote]['costo_total_en_metros'])
                     y += 1
                 
                 y += 3
