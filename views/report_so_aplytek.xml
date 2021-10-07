@@ -28,7 +28,7 @@
                                 <td colspan="4" style="border-top: none;"></td>
                                 <td style="border-top: none;">FECHA:</td>
                                 <td colspan="2" style="border-top: none;">
-                                    <span t-field="o.confirmation_date"/>
+                                    <span t-field="o.date_order"/>
                                 </td>
                             </tr>
                             <tr style="vertical-align: bottom;">
@@ -97,15 +97,18 @@
                         </table>
                         <br/>
                         <div style="page-break-inside: avoid">
-                            <div style="text-align: center;">Notas</div><br/>
-                            <b>1. Forma de Pago:</b> <span t-field="o.payment_term_id"/><br/>
-                            <b>2. Validez de la oferta:</b> <span t-field="o.oferta_por"/><br/>
-                            <b>3. Tiempo de entrega:</b> <span t-field="o.tiempo_estimado_entrega"/><br/>
-                            <b>4. Condiciones:</b> <span t-field="o.note"/><br/>
-                            <b>5. Precios Incluyen:</b> <span t-field="o.incluyen"/><br/>
-                            <b>6. Precios no incluyen:</b> <span t-field="o.no_incluyen"/> <br/>
-                            <br/>
-                            Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
+                            <div style="text-align: center;"><h4>Notas</h4></div><br/>
+                            <div style="text-align: justify;padding-left: 110px;padding-right: 110px;">
+                                <b>1. Forma de Pago:</b> <span t-field="o.payment_term_id"/><br/>
+                                <b>2. Validez de la oferta:</b> <span t-field="o.validity_date"/><br/>
+                                <b>3. Tiempo de entrega:</b> <span t-field="o.tiempo_estimado_entrega"/><br/>
+                                <b>4. Condiciones:</b> <span t-field="o.note"/><br/>
+                                <b>5. Precios Incluyen:</b> <span t-field="o.incluyen"/><br/>
+                                <b>6. Precios no incluyen:</b> <span t-field="o.no_incluyen"/> 
+                                
+                                <br/><br/>
+                                Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
+                            </div>
                             <div style="text-align: center;">
                                 <br/><br/>
                                 Atentamente,
