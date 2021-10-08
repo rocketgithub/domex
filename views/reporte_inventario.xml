@@ -10,7 +10,7 @@
         
         <xpath expr="//table" position="after">
             <div style="text-align: right;">
-                <h4><b>Total Activo y Capital: <span t-esc="total_pasivo + total_capital" t-options="{'widget': 'monetary', 'display_currency': user.company_id.currency_id}"/></b></h4>
+                <h4><b>Total Pasivo y Capital: <span t-esc="total_pasivo + total_capital" t-options="{'widget': 'monetary', 'display_currency': user.company_id.currency_id}"/></b></h4>
             </div>
         </xpath>
     </template>
