@@ -20,6 +20,7 @@
                                     <br/>
                                     <h4>ORDEN DE PRODUCCIÓN
                                     <br/><b><span t-field="o.name"/></b></h4>
+                                    <h5><b><span t-field="o.sale_id"/></b></h5>
                                 </td>
                             </tr>
                         </table>
