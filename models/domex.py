@@ -58,7 +58,7 @@ class SaleOrder(models.Model):
     comision = fields.Float('Comision de ventas')
     lugar_entrega = fields.Char('Lugar de entrega')
     tiempo_estimado_entrega = fields.Char('Tiempo estimado de entrega')
-    medidas = fields.Char('Medidas')
+    medidas = fields.Char('De acuerdo a')
     oferta_por = fields.Char("Oferta por") 
     no_incluyen = fields.Text("Precios no incluyen")
     incluyen = fields.Char("Precios incluyen")

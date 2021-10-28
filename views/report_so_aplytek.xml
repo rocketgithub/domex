@@ -52,7 +52,7 @@
                         <table class="table table-condensed;">
                             <tr>
                                 <td style="border-top: none; border-left: 1px solid grey">
-                                    Estimado <span t-field="o.atencion.name"/> 
+                                    Estimado/a <span t-field="o.atencion.name"/> 
                                     <br/>De acuerdo a <u><span t-esc="o.medidas"/></u> a continuación tenemos el agrado de presentarle nuestra oferta por <u><span t-esc="o.oferta_por"/></u> de los materiales para el proyecto indicado en referencia, la cual comprende:
                                 </td>
                             </tr>
@@ -103,8 +103,9 @@
                                 <b>2. Validez de la oferta:</b> <span t-field="o.validity_date"/><br/>
                                 <b>3. Tiempo de entrega:</b> <span t-field="o.tiempo_estimado_entrega"/><br/>
                                 <b>4. Condiciones:</b> <span t-field="o.note"/><br/>
-                                <b>5. Precios Incluyen:</b> <span t-field="o.incluyen"/><br/>
-                                <b>6. Precios no incluyen:</b> <span t-field="o.no_incluyen"/> 
+                                <b>5. Precios incluyen:</b> <span t-field="o.incluyen"/><br/>
+                                <b>6. Precios no incluyen:</b> <span t-field="o.no_incluyen"/><br/>
+                                <b>7. Tiempo de instalación:</b> <span t-field="o.tiempo_instalacion"/> 
                                 
                                 <br/><br/>
                                 Sin otro particular, quedamos a su disposición para cualquier aclaración al respecto.  Aprovechando la oportunidad para saludarlo, nos suscribimos
