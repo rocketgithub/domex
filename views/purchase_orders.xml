@@ -5,20 +5,20 @@
             <t t-foreach="docs" t-as="o">
                    <div class="article">
                         <div class="page">
-                            <t t-if="company.name == 'Almex, S.A.'">
+                            <t t-if="company.name == 'ALMEX, S.A.'">
                                 <img src='/domex/static/src/img/almex_logo_reporte.png' style="max-width: 837px;"/>
                             </t>
-                            <t t-elif="company.name == 'Aplytek, S.A.'">
+                            <t t-elif="company.name == 'APLYTEK, S.A.'">
                                 <img src='/domex/static/src/img/aplytek_logo_reporte.png' style="max-width: 837px;"/>
                             </t>
                             
-                            <t t-elif="company.name == 'Axir, S.A.'">
+                            <t t-elif="company.name == 'AXIR, S.A.'">
                                 <img src='/domex/static/src/img/axir_logo.png' style="max-width: 837px;"/>
                             </t>
-                            <t t-elif="company.name == 'Capex, S.A.'">
+                            <t t-elif="company.name == 'CAPEX, S.A.'">
                                 <img src='/domex/static/src/img/capex_logo.png' style="max-width: 837px;"/>
                             </t>
-                            <t t-elif="company.name == 'Domex, S.A.'">
+                            <t t-elif="company.name == 'DOMEX, S.A.'">
                                 <img src='/domex/static/src/img/domex_logo_reporte.png' style="max-width: 837px;"/>
                             </t>
                             <t t-elif="company.name == 'KINETICS, S.A.'">
