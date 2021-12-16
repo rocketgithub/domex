@@ -72,7 +72,7 @@ class ReporteDiario(models.AbstractModel):
                     la['total_debe'] += l['debe']
                     la['total_haber'] += l['haber']
 
-            lineas = cuentas_agrupadas.values()
+            lineas = sorted(cuentas_agrupadas.values(), key=lambda l: l['fecha'])
             res = {'lineas': lineas,'totales': totales }
         return res
             
